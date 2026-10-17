@@ -1,0 +1,200 @@
+<title>NeuroRecursion</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: stacked 16:9 slides; one headline + one data element per slide; blue = ours, slate = baselines, red only for failures */
+:root{
+  --page:#eef1f5; --slide:#ffffff; --ink:#0f1b2d; --muted:#5b6b7f; --rule:#e2e7ee; --soft:#f5f7fa;
+  --ours:#0b63c4; --oursSoft:#e6f0fb; --base:#9aa8b8; --good:#12805c; --bad:#b42318;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --page:#0b1017; --slide:#121a24; --ink:#e8eef5; --muted:#94a3b5; --rule:#233040; --soft:#18222e;
+  --ours:#5aa2f0; --oursSoft:#16293f; --base:#5f6f82; --good:#3cc28f; --bad:#f07468; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --page:#0b1017; --slide:#121a24; --ink:#e8eef5; --muted:#94a3b5; --rule:#233040; --soft:#18222e;
+  --ours:#5aa2f0; --oursSoft:#16293f; --base:#5f6f82; --good:#3cc28f; --bad:#f07468; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px}
+.deck{display:flex;flex-direction:column;gap:24px;max-width:1080px;margin:0 auto}
+.slide{background:var(--slide);border:1px solid var(--rule);border-radius:8px;aspect-ratio:16/9;max-width:100%;
+  padding:clamp(22px,4.2vw,56px);display:flex;flex-direction:column;gap:clamp(14px,2.2vw,28px);overflow:hidden;scroll-margin-top:16px}
+.slide:focus-visible{outline:3px solid var(--ours);outline-offset:3px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ours)}
+h1,h2{margin:0;font-weight:600;letter-spacing:-.015em;text-wrap:balance;line-height:1.12}
+h1{font-size:clamp(36px,6vw,68px)}
+h2{font-size:clamp(22px,3vw,34px);max-width:30ch}
+.sub{font-size:clamp(15px,1.7vw,20px);color:var(--muted);max-width:44ch;margin:0}
+.body{flex:1;min-height:0;display:grid;gap:clamp(14px,2.4vw,32px);align-content:center}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stat{display:flex;flex-direction:column;gap:6px;min-width:0;border-top:3px solid var(--ours);padding-top:14px}
+.stat.base{border-top-color:var(--base)}
+.big{font-size:clamp(30px,4.6vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.big small{font-size:.38em;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:4px}
+.label{font-size:clamp(13px,1.4vw,16px);color:var(--muted);margin:0}
+.foot{font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lane{display:flex;flex-direction:column;gap:10px}
+.lane .name{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lane.ours .name{color:var(--ours)}
+.steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:clamp(12px,1.3vw,15px)}
+.step{padding:8px 12px;border-radius:6px;background:var(--soft);border:1px solid var(--rule);white-space:nowrap}
+.lane.ours .step.key{background:var(--oursSoft);border-color:var(--ours);color:var(--ink);font-weight:500}
+.step.loop{border-style:dashed;color:var(--bad)}
+.sep{color:var(--base)}
+.col{display:flex;flex-direction:column;gap:8px;min-width:0;padding:16px;border-radius:8px;background:var(--soft)}
+.col h3{margin:0;font-size:clamp(15px,1.6vw,19px);font-weight:600}
+.col .when{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ours)}
+.col p{margin:0;font-size:clamp(13px,1.35vw,15px);color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:clamp(13px,1.35vw,15px);font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.r{text-align:right}.mono{font-family:var(--mono);font-size:.9em}
+.bar{display:grid;grid-template-columns:minmax(110px,30%) 1fr 56px;align-items:center;gap:10px;font-size:clamp(13px,1.35vw,15px)}
+.track{height:14px;background:var(--soft);border-radius:3px;overflow:hidden}
+.fill{height:100%;background:var(--ours);border-radius:3px}
+.fill.base{background:var(--base)}
+.val{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.bars{display:flex;flex-direction:column;gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kpi{background:var(--soft);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kpi b{font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.good{color:var(--good)}.bad{color:var(--bad)}
+.nav{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:center;margin:0}
+svg text{font-family:var(--sans)}
+@media (max-width:760px){.slide{aspect-ratio:auto}.c3,.c2,.kpis{grid-template-columns:1fr}}
+</style>
+
+<main class="deck">
+
+<section class="slide" tabindex="0" aria-label="Title">
+  <span class="eyebrow">Recursive Agents Hackathon · Crusoe × Cerebral Valley</span>
+  <div class="body" style="align-content:center;gap:16px">
+    <h1>NeuroRecursion</h1>
+    <p class="sub">Agents that keep a brain-computer interface working without daily recalibration.</p>
+  </div>
+  <div class="foot"><span>github.com/sandeepvijayarao09/neurorecursion</span><span>Sandeep Vijayarao · Oct 17 2026</span></div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Problem statement">
+  <span class="eyebrow">Problem</span>
+  <h2>Brain signals drift, so decoders need daily recalibration</h2>
+  <div class="body c3">
+    <div class="stat base"><span class="big">55<small>min / week</small></span><p class="label">Neuralink users spend recalibrating</p></div>
+    <div class="stat base"><span class="big">205→1<small>Mbps</small></span><p class="label">Raw data vs what the implant radio can send</p></div>
+    <div class="stat"><span class="big">0.34→−0.06<small>R²</small></span><p class="label">Frozen decoder accuracy, 1–3 weeks later (human iBCI)</p></div>
+  </div>
+  <div class="foot"><span>Neuralink, Oct 2026 · FALCON H1 (DANDI 000954), measured here</span></div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Proposed solution">
+  <span class="eyebrow">Solution</span>
+  <h2>Freeze the model. Agents adapt the signal around it.</h2>
+  <div class="body" style="gap:26px">
+    <div class="lane"><span class="name">Today</span>
+      <div class="steps"><span class="step">Raw signal</span><span class="sep">→</span><span class="step">Spikes</span><span class="sep">→</span><span class="step">Decoder</span><span class="sep">→</span><span class="step">Cursor</span><span class="sep">↺</span><span class="step loop">User recalibrates, model retrained</span></div></div>
+    <div class="lane ours"><span class="name">NeuroRecursion</span>
+      <div class="steps"><span class="step">Raw signal</span><span class="sep">→</span><span class="step">Spikes</span><span class="sep">→</span><span class="step key">Agents + user memory</span><span class="sep">→</span><span class="step">Frozen decoder</span><span class="sep">→</span><span class="step">Cursor</span></div></div>
+  </div>
+  <div class="body c3" style="flex:0">
+    <div class="stat"><span class="big" style="font-size:clamp(22px,2.6vw,30px)">0 labels</span><p class="label">on new days</p></div>
+    <div class="stat"><span class="big" style="font-size:clamp(22px,2.6vw,30px)">0 retrains</span><p class="label">model trained once</p></div>
+    <div class="stat"><span class="big" style="font-size:clamp(22px,2.6vw,30px)">100% audited</span><p class="label">every change verified and logged</p></div>
+  </div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Recursive architecture">
+  <span class="eyebrow">Recursive architecture</span>
+  <h2>Three loops, each checking the one inside it</h2>
+  <div class="body c3">
+    <div class="col"><span class="when">Each proposal</span><h3>Act and verify</h3><p>Tool agents propose a fix. A label-free verifier accepts it only if today's data improves.</p></div>
+    <div class="col"><span class="when">Each day</span><h3>Plan and check</h3><p>Planner writes the day's pass/fail checks. Up to 3 loops, then done, re-plan or escalate to a human.</p></div>
+    <div class="col"><span class="when">Each version</span><h3>Rewrite and gate</h3><p>Reviewer rewrites the playbook. Kept only if it wins on unseen drift scenarios.</p></div>
+  </div>
+  <div class="foot"><span>agents.py · recursive.py · brain.py</span><span>All decisions in recursive_audit.jsonl</span></div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Crusoe and NVIDIA model usage">
+  <span class="eyebrow">Crusoe × NVIDIA</span>
+  <h2>Nemotron agents on Crusoe Managed Inference</h2>
+  <div class="body">
+    <table>
+      <thead><tr><th>Role</th><th>Model</th><th class="r">Calls</th><th class="r">Median latency</th><th class="r">$ / 1M in · out</th></tr></thead>
+      <tbody>
+        <tr><td>Planner</td><td class="mono">NVIDIA-Nemotron-3-Super-120B-A12B</td><td class="r">55</td><td class="r">1.9 s</td><td class="r">0.30 · 2.40</td></tr>
+        <tr><td>Reviewer</td><td class="mono">Nemotron-3.5-Lightning-30B-A3B</td><td class="r">3</td><td class="r">0.7 s</td><td class="r">0.05 · 0.20</td></tr>
+        <tr><td>Decoder</td><td>Mamba-style state-space encoder, frozen</td><td class="r">—</td><td class="r">—</td><td class="r">local</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot"><span>Endpoint api.inference.crusoecloud.com/v1 · rule-based fallback if unavailable</span></div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Memory layer">
+  <span class="eyebrow">Memory layer</span>
+  <h2>A per-user profile decides which agents run</h2>
+  <div class="body c2">
+    <table>
+      <thead><tr><th>Memory</th><th>Holds</th></tr></thead>
+      <tbody>
+        <tr><td>Episodic</td><td>Each day's proposals and verdicts</td></tr>
+        <tr><td>Semantic</td><td>Channel reliability, agent success rates</td></tr>
+        <tr><td>Procedural</td><td>Last verified adaptation state</td></tr>
+        <tr><td>Notes</td><td>One fact per topic for the planner</td></tr>
+      </tbody>
+    </table>
+    <div class="bars" aria-label="How often each agent helped this user over 7 days">
+      <span class="eyebrow" style="color:var(--muted)">Learned in 7 days · agent success rate</span>
+      <div class="bar"><span>Input gain</span><div class="track"><div class="fill" style="width:67%"></div></div><span class="val">67%</span></div>
+      <div class="bar"><span>Channel memory</span><div class="track"><div class="fill" style="width:44%"></div></div><span class="val">44%</span></div>
+      <div class="bar"><span>Latent align</span><div class="track"><div class="fill base" style="width:17%"></div></div><span class="val">17%</span></div>
+      <p class="label" style="font-size:13px">Under 20% after 3 tries is pruned. 6 chronically bad channels found.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" tabindex="0" aria-label="Results">
+  <span class="eyebrow">Results · FALCON H1, 7 real held-out days</span>
+  <h2>Better than frozen with zero labels</h2>
+  <div class="body c2">
+    <svg viewBox="0 0 520 210" width="100%" role="img" aria-label="Mean velocity R²: frozen −0.062, stateless agents −0.016, memory plus Nemotron +0.013, recalibration +0.106">
+      <line x1="270" y1="6" x2="270" y2="186" stroke="var(--muted)" stroke-width="1"/>
+      <text x="270" y="204" text-anchor="middle" font-size="12" fill="var(--muted)">0</text>
+      <text x="170" y="204" text-anchor="middle" font-size="12" fill="var(--muted)">−0.1</text>
+      <text x="370" y="204" text-anchor="middle" font-size="12" fill="var(--muted)">+0.1</text>
+      <line x1="170" y1="186" x2="170" y2="190" stroke="var(--muted)"/><line x1="370" y1="186" x2="370" y2="190" stroke="var(--muted)"/>
+      <g font-size="14">
+        <text x="0" y="31" fill="var(--ink)">Frozen</text><rect x="208" y="14" width="62" height="26" rx="2" fill="var(--base)"/><text x="202" y="32" text-anchor="end" fill="var(--muted)">−0.062</text>
+        <text x="0" y="75" fill="var(--ink)">Agents</text><rect x="254" y="58" width="16" height="26" rx="2" fill="var(--base)"/><text x="248" y="76" text-anchor="end" fill="var(--muted)">−0.016</text>
+        <text x="0" y="119" fill="var(--ink)" font-weight="600">+ Memory, Nemotron</text><rect x="270" y="102" width="13" height="26" rx="2" fill="var(--ours)"/><text x="290" y="120" fill="var(--ours)" font-weight="600">+0.013</text>
+        <text x="0" y="163" fill="var(--ink)">Recalibration*</text><rect x="270" y="146" width="106" height="26" rx="2" fill="var(--base)" opacity=".55"/><text x="383" y="164" fill="var(--muted)">+0.106</text>
+      </g>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <div class="kpis">
+        <div class="kpi"><b class="good">6/7</b><span>days beat frozen</span></div>
+        <div class="kpi"><b class="good">4×</b><span>smaller worst-day loss</span></div>
+        <div class="kpi"><b class="bad">−1.28</b><span>R² without verifier</span></div>
+      </div>
+      <p class="label" style="font-size:13px">Mean velocity R². *Recalibration needs ~3.5 min of labels each day and still leads. Memory gain (+0.029 vs agents) is not yet significant.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Next: multi-user foundation model · memory that audits the verifier</span></div>
+</section>
+
+<p class="nav">Arrow keys move between slides</p>
+</main>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  function cur(){var y=window.scrollY+window.innerHeight*0.3,k=0;slides.forEach(function(el,i){if(el.offsetTop<=y)k=i});return k}
+  function go(i){var el=slides[Math.max(0,Math.min(slides.length-1,i))];el.scrollIntoView({behavior:'smooth'});el.focus({preventScroll:true})}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown'].indexOf(e.key)>-1){e.preventDefault();go(cur()+1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(cur()-1)}});
+})();
+</script>
