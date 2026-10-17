@@ -1,0 +1,105 @@
+{
+  "dataset": "MC_Maze medium (DANDI 000139), Jenkins, motor/premotor cortex",
+  "units": 152,
+  "bin_ms": 20.0,
+  "lag_ms": 80.0,
+  "device": "mps",
+  "runtime_s": 94.8,
+  "pretrain_loss": [
+    0.32441896339443244,
+    0.2093846651716767,
+    0.20938640289774565,
+    0.20830719075470328,
+    0.2078488808926021,
+    0.207356634819619,
+    0.2071394069451038,
+    0.20697446668816505,
+    0.2065416457497071,
+    0.20571932697964607,
+    0.20525171196906367,
+    0.20505245364157954,
+    0.2042045555660658,
+    0.20384821504633002,
+    0.20332270568219302,
+    0.20257095393733443,
+    0.2024241483935686,
+    0.20206417157271198,
+    0.20206439717907773,
+    0.20201384645199108,
+    0.2013641029039276,
+    0.20182342869099054,
+    0.20110927285435043,
+    0.20102215774148424,
+    0.20100260518978688,
+    0.20056661643157495,
+    0.20052253308697282,
+    0.20049193543251428,
+    0.20055473909199795,
+    0.2004872469980026
+  ],
+  "constant_rate_baseline_nll": 0.20930956304073334,
+  "velocity_r2_test": {
+    "ridge_raw_spikes": 0.3684740161947284,
+    "pretrained_embeddings": 0.43764308049469874
+  },
+  "velocity_r2_test_movement_only": {
+    "ridge_raw_spikes": 0.4712809023390309,
+    "pretrained_embeddings": 0.5288920057702831
+  },
+  "label_efficiency": {
+    "label_fraction": [
+      0.02,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "raw_r2": [
+      0.014759447829145733,
+      0.19426533218298442,
+      0.25981275567656115,
+      0.2779673574425809,
+      0.3295011976359161,
+      0.3684740161947284
+    ],
+    "emb_r2": [
+      0.23607258777030793,
+      0.28104264492246034,
+      0.3382601223705655,
+      0.38313040526552283,
+      0.4262289852941725,
+      0.43764308049469874
+    ]
+  },
+  "offline_selection_bps": [
+    {
+      "decoder": "true hand (upper bound)",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 48,
+      "accuracy": 0.96,
+      "seconds": 77.4970000000011,
+      "bps": 1.6663654904660563
+    },
+    {
+      "decoder": "ridge on raw spikes",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 31,
+      "accuracy": 0.62,
+      "seconds": 77.4970000000011,
+      "bps": 0.4347040409911452
+    },
+    {
+      "decoder": "pretrained encoder + linear head",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 23,
+      "accuracy": 0.46,
+      "seconds": 77.4970000000011,
+      "bps": 0.0
+    }
+  ],
+  "bps_note": "Offline proxy: Neuralink's Webgrid formula (N_click=1) applied to reach-target selection from integrated decoded velocity. Not closed-loop; not comparable to Neuralink's published 11.32 BPS."
+}

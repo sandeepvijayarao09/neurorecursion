@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F6F2;--surface:#FFFFFF;--surface-2:#F1EFE8;--text:#1F1E1C;--text-2:#5F5E5A;--text-3:#888780;--border:rgba(31,30,28,.10);--border-2:rgba(31,30,28,.18);--accent:__ACCENT__;--accent-bg:__ACCENT_BG__;--good:#3B6D11;--bad:#A32D2D;--warn:#854F0B;--canvas:#FBFAF7;--grid1:#D3D1C7;--grid2:#ECEAE3;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141413;--surface:#1E1E1C;--surface-2:#262624;--text:#F1EFE8;--text-2:#B4B2A9;--text-3:#888780;--border:rgba(241,239,232,.10);--border-2:rgba(241,239,232,.20);--accent-bg:__ACCENT_BG_DARK__;--good:#97C459;--bad:#F09595;--warn:#EF9F27;--canvas:#181817;--grid1:#444441;--grid2:#2A2A28;}}
+:root[data-theme="dark"]{--bg:#141413;--surface:#1E1E1C;--surface-2:#262624;--text:#F1EFE8;--text-2:#B4B2A9;--text-3:#888780;--border:rgba(241,239,232,.10);--border-2:rgba(241,239,232,.20);--accent-bg:__ACCENT_BG_DARK__;--good:#97C459;--bad:#F09595;--warn:#EF9F27;--canvas:#181817;--grid1:#444441;--grid2:#2A2A28;}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--text);font:400 14px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--border);background:var(--surface)}
+.mark{width:28px;height:28px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:600;font-size:13px;flex:none}
+.htxt{min-width:0}.htxt h1{margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em}.htxt p{margin:0;color:var(--text-2);font-size:13px}
+.seg{margin-left:auto;display:flex;background:var(--surface-2);border-radius:9px;padding:3px;gap:2px;flex:none}
+.seg a{padding:6px 12px;border-radius:7px;color:var(--text-2);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap}
+.seg a.on{background:var(--surface);color:var(--text);box-shadow:0 0 0 1px var(--border)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 380px;height:calc(100vh - 61px)}
+.stage{position:relative;background:var(--canvas);min-height:420px}
+canvas{width:100%;height:100%;display:block;cursor:grab}
+.tools{position:absolute;top:14px;left:14px;display:flex;gap:6px}
+.btn{font:500 12px Inter,sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--border-2);border-radius:8px;padding:6px 10px;cursor:pointer}
+.btn:hover{background:var(--surface-2)}.btn.on{border-color:var(--accent);color:var(--accent)}
+.hint{position:absolute;left:14px;bottom:12px;color:var(--text-3);font-size:12px}
+.legend{position:absolute;right:14px;top:16px;max-width:55%;display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;font-size:12px;color:var(--text-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+aside{border-left:1px solid var(--border);background:var(--surface);overflow:auto;padding:20px 20px 28px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin:0 0 10px}
+.flow{font-size:13px;color:var(--text-2);background:var(--surface-2);border-radius:10px;padding:10px 12px;margin:0 0 20px;line-height:1.7}
+.flow b{color:var(--text);font-weight:500}.flow b.hl{color:var(--accent)}
+ol.steps{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:4px}
+ol.steps li{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+ol.steps li:hover{background:var(--surface-2)}ol.steps li.on{background:var(--accent-bg);border-color:var(--accent)}
+.num{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:600;color:#fff}
+.sname{font-weight:500;font-size:13.5px}.sshort{color:var(--text-2);font-size:12.5px}
+.card{border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 0 20px}
+.card h2{margin:0 0 6px;font-size:15px;font-weight:600}.card p{margin:0 0 12px;color:var(--text-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{font-size:12px;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--text)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-top:12px;font-size:12.5px}.kv dt{color:var(--text-2)}.kv dd{margin:0;font-weight:500;text-align:right}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric{background:var(--surface-2);border-radius:10px;padding:10px 12px}.metric .l{font-size:12px;color:var(--text-2)}.metric .v{font-size:16px;font-weight:600;margin-top:2px}
+.v.good{color:var(--good)}.v.bad{color:var(--bad)}.v.warn{color:var(--warn)}
+.foot{font-size:11.5px;color:var(--text-3);margin-top:16px}
+@media (max-width:900px){main{grid-template-columns:1fr;height:auto}.stage{height:62vh}aside{border-left:none;border-top:1px solid var(--border)}header{flex-wrap:wrap;padding:12px 16px}.seg{margin-left:0}.legend{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">NR</div>
+  <div class="htxt"><h1 id="h1"></h1><p id="h2"></p></div>
+  <nav class="seg" id="seg"></nav>
+</header>
+<main>
+  <section class="stage" id="wrap">
+    <canvas id="c" aria-label="3D pipeline view"></canvas>
+    <div class="tools"><button class="btn" id="tour">▶ Play tour</button><button class="btn" id="pause">Pause</button><button class="btn" id="reset">Reset view</button></div>
+    <div class="legend" id="legend"></div>
+    <div class="hint">Drag to orbit · scroll to zoom · click a stage</div>
+  </section>
+  <aside>
+    <p class="eyebrow">Pipeline</p>
+    <div class="flow" id="flow"></div>
+    <ol class="steps" id="steps"></ol>
+    <div class="card" id="detail"></div>
+    <p class="eyebrow">At a glance</p>
+    <div class="metrics" id="metrics"></div>
+    <p class="foot" id="foot"></p>
+  </aside>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const CFG = __CONFIG__;
+const $ = id => document.getElementById(id);
+const dark = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+const hex = c => '#' + c.toString(16).padStart(6, '0');
+
+// ---------- panel ----------
+$('h1').textContent = CFG.title; $('h2').textContent = CFG.subtitle; document.title = CFG.title;
+$('seg').innerHTML = CFG.nav.map(n => `<a href="${n.href}" class="${n.on ? 'on' : ''}">${n.label}</a>`).join('');
+$('flow').innerHTML = CFG.flow;
+$('steps').innerHTML = CFG.stages.map((s, i) => `<li data-i="${i}"><span class="num" style="background:${hex(s.color)}">${i + 1}</span><div><div class="sname">${s.name}</div><div class="sshort">${s.short}</div></div></li>`).join('');
+$('metrics').innerHTML = CFG.metrics.map(m => `<div class="metric"><div class="l">${m[0]}</div><div class="v ${m[2] || ''}">${m[1]}</div></div>`).join('');
+$('legend').innerHTML = CFG.legend.map(l => `<span><i style="background:${hex(l[1])}"></i>${l[0]}</span>`).join('');
+$('foot').innerHTML = CFG.footnote;
+document.querySelectorAll('#steps li').forEach(li => li.onclick = () => { stopTour(); focus(+li.dataset.i); });
+
+// ---------- scene ----------
+const wrap = $('wrap'), cv = $('c');
+const R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true }); R.setPixelRatio(Math.min(2, devicePixelRatio));
+const S = new THREE.Scene(), C = new THREE.PerspectiveCamera(40, 1, 0.1, 400);
+S.add(new THREE.AmbientLight(0xffffff, .62));
+const L1 = new THREE.DirectionalLight(0xffffff, .8); L1.position.set(-8, 14, 12); S.add(L1);
+const L2 = new THREE.DirectionalLight(0xffffff, .25); L2.position.set(10, 5, -12); S.add(L2);
+const css = getComputedStyle(document.documentElement);
+const grid = new THREE.GridHelper(70, 70, new THREE.Color(css.getPropertyValue('--grid1').trim()), new THREE.Color(css.getPropertyValue('--grid2').trim())); grid.position.set(4, -4.2, 0); S.add(grid);
+
+const fade = [], pick = [];
+const reg = (o, g) => { o.userData.g = g; fade.push(o); return o; };
+function label(t, sub, col, k = 1) {
+  const c = document.createElement('canvas'); c.width = 560; c.height = sub ? 170 : 104; const g = c.getContext('2d');
+  g.fillStyle = dark() ? 'rgba(30,30,28,.95)' : 'rgba(255,255,255,.97)'; g.strokeStyle = hex(col); g.lineWidth = 4;
+  g.beginPath(); (g.roundRect ? g.roundRect(4, 4, 552, c.height - 8, 18) : g.rect(4, 4, 552, c.height - 8)); g.fill(); g.stroke();
+  g.fillStyle = hex(col); g.fillRect(4, 22, 7, c.height - 44);
+  g.textAlign = 'center'; g.fillStyle = dark() ? '#F1EFE8' : '#1F1E1C'; g.font = '600 46px Inter, sans-serif'; g.fillText(t, 284, sub ? 72 : 66);
+  if (sub) { g.fillStyle = dark() ? '#B4B2A9' : '#5F5E5A'; g.font = '400 33px Inter, sans-serif'; g.fillText(sub, 284, 128); }
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthTest: false }));
+  s.scale.set(3.5 * k, (sub ? 1.06 : 0.65) * k, 1); s.renderOrder = 10; return s;
+}
+const mat = (col, o = {}) => new THREE.MeshStandardMaterial({ color: col, roughness: o.r ?? .45, metalness: o.m ?? .05, transparent: true, opacity: o.op ?? 1 });
+function lineTo(pts, col, g, dash) {
+  const geo = new THREE.BufferGeometry().setFromPoints(pts);
+  const m = dash ? new THREE.LineDashedMaterial({ color: col, dashSize: .22, gapSize: .14, transparent: true }) : new THREE.LineBasicMaterial({ color: col, transparent: true });
+  const l = new THREE.Line(geo, m); if (dash) l.computeLineDistances(); S.add(reg(l, g)); return l;
+}
+function person(col, s = 1) { const g = new THREE.Group(); const b = new THREE.Mesh(new THREE.CylinderGeometry(.22 * s, .3 * s, .55 * s, 18), mat(col)); const h = new THREE.Mesh(new THREE.SphereGeometry(.2 * s, 18, 12), mat(col)); h.position.y = .48 * s; g.add(b); g.add(h); return g; }
+function shapeMesh(shape, col, k = 1) {
+  if (shape === 's') return new THREE.Mesh(new THREE.SphereGeometry(.34 * k, 24, 16), mat(col));
+  if (shape === 'c') return new THREE.Mesh(new THREE.CylinderGeometry(.3 * k, .3 * k, .46 * k, 24), mat(col));
+  if (shape === 'h') return person(col, k);
+  return new THREE.Mesh(new THREE.BoxGeometry(.6 * k, .44 * k, .6 * k), mat(col));
+}
+
+// brain
+function hemi(side) {
+  const g = new THREE.SphereGeometry(1.7, 110, 72), p = g.attributes.position, v = new THREE.Vector3();
+  for (let i = 0; i < p.count; i++) {
+    v.fromBufferAttribute(p, i); const n = v.clone().normalize();
+    const d = .085 * Math.sin(7.5 * v.x + 2.1 * v.y) * Math.sin(8.3 * v.y + 1.3 * v.z) + .055 * Math.sin(13 * v.z + 4 * v.x) * Math.cos(11 * v.y) + .028 * Math.sin(21 * v.x + 17 * v.z);
+    v.add(n.multiplyScalar(d)); v.x *= .62; v.y *= .82; v.z *= 1.12; if (v.y < -.5) v.y = -.5 + (v.y + .5) * .55; p.setXYZ(i, v.x + side * .58, v.y, v.z);
+  }
+  g.computeVertexNormals(); return new THREE.Mesh(g, mat(0xED93B1, { r: .6 }));
+}
+const BX = CFG.brainX;
+const brain = new THREE.Group(); brain.add(hemi(-1)); brain.add(hemi(1));
+const stem = new THREE.Mesh(new THREE.CylinderGeometry(.3, .19, 1.5, 20), mat(0xD4537E)); stem.position.set(0, -1.15, -.5); brain.add(stem);
+brain.position.set(BX, .5, 0); brain.rotation.y = Math.PI / 2; S.add(brain); brain.children.forEach(m => { reg(m, 0); m.userData.stage = 0; pick.push(m); });
+const motor = new THREE.Mesh(new THREE.SphereGeometry(.3, 20, 14), new THREE.MeshBasicMaterial({ color: 0xFAC775, transparent: true, opacity: .9 })); motor.position.set(BX + .45, 1.95, .35); S.add(reg(motor, 0));
+const chip = new THREE.Mesh(new THREE.CylinderGeometry(.55, .55, .18, 40), mat(0xB4B2A9, { m: .75, r: .3 })); chip.position.set(BX + .7, 2.8, .3); chip.rotation.z = -.35; S.add(reg(chip, 0));
+for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2; lineTo([chip.position.clone(), new THREE.Vector3(BX + .45 + .35 * Math.cos(a), 2.05 + .15 * Math.sin(a * 2), .35 + .35 * Math.sin(a))], 0x5F5E5A, 0); }
+const sparks = []; for (let i = 0; i < 26; i++) { const s = new THREE.Mesh(new THREE.SphereGeometry(.05, 8, 6), new THREE.MeshBasicMaterial({ color: 0xFAC775, transparent: true })); const a = Math.random() * 6.28, b = Math.random() * 2.5; s.position.set(BX + 1.15 * Math.sin(b) * Math.cos(a), .5 + 1.25 * Math.cos(b), 1.6 * Math.sin(b) * Math.sin(a)); s.userData.o = Math.random() * 6; S.add(reg(s, 0)); sparks.push(s); }
+const bl = label(CFG.stages[0].name, CFG.stages[0].sub, CFG.stages[0].color, 1.3); bl.position.set(BX, 3.9, 0); S.add(reg(bl, 0));
+
+// main line
+const X0 = BX + 3, X1 = CFG.stages[CFG.stages.length - 1].x + 1.2;
+const trunk = new THREE.Mesh(new THREE.CylinderGeometry(.1, .1, X1 - X0, 16), mat(0x888780, { op: .95 })); trunk.rotation.z = Math.PI / 2; trunk.position.set((X0 + X1) / 2, 0, 0); S.add(trunk);
+const link = new THREE.QuadraticBezierCurve3(chip.position.clone(), new THREE.Vector3(BX + 1.9, 1.6, .1), new THREE.Vector3(X0, 0, 0));
+lineTo(link.getPoints(30), 0x378ADD, -1);
+
+// stages
+const anchors = {}, subPos = {}, animated = {};
+CFG.stages.forEach((s, i) => {
+  if (i === 0) return;
+  const k = s.big || 1; let m;
+  if (s.shape === 'model') {
+    m = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.25, 1.8), mat(s.color)); m.add(body);
+    const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(2.05, 1.5, 2.05)), new THREE.LineBasicMaterial({ color: 0x85B7EB, transparent: true })); m.add(edges);
+    const slab = new THREE.Mesh(new THREE.BoxGeometry(1.8, .16, 1.8), mat(s.slab || 0x888780)); slab.position.y = .72; m.add(slab);
+    m.children.forEach(c => { reg(c, i); c.userData.stage = i; pick.push(c); });
+  } else {
+    m = s.shape === 's' ? new THREE.Mesh(new THREE.SphereGeometry(.8 * k, 32, 20), mat(s.color)) : s.shape === 'c' ? new THREE.Mesh(new THREE.CylinderGeometry(.72 * k, .72 * k, 1.15 * k, 32), mat(s.color)) : new THREE.Mesh(new THREE.BoxGeometry(1.55 * k, 1.1 * k, 1.55 * k), mat(s.color));
+    reg(m, i); m.userData.stage = i; pick.push(m);
+  }
+  m.position.set(s.x, 0, 0); S.add(m); animated[i] = m;
+  const l = label(s.name, s.sub, s.color, 1.3); l.position.set(s.x, s.shape === 'model' ? 2.15 : 1.8 + .2 * (k - 1), 0); S.add(reg(l, i));
+  anchors[i] = new THREE.Vector3(s.x, 0, 0);
+  if (s.subs && s.subs.length) {
+    const above = !!s.subsAbove, y = above ? 3.9 : -3.4, z0 = above ? -1.2 : 1.4, n = s.subs.length, cols = n, rows = 1;
+    const w = cols * 2.6 + .5, d = rows * 2.1 + .6;
+    const plat = new THREE.Mesh(new THREE.BoxGeometry(w, .12, d), mat(s.color, { op: dark() ? .2 : .13 })); plat.position.set(s.x, y, z0 + (rows - 1) * 1.05); S.add(reg(plat, i));
+    const cn = lineTo([new THREE.Vector3(s.x, above ? .8 : -.75, 0), new THREE.Vector3(s.x, y + (above ? -.08 : .08), z0)], s.color, i, true);
+    subPos[i] = [];
+    s.subs.forEach((sb, j) => {
+      const r = 0, cI = j, cn2 = n;
+      const sx = s.x - (cn2 - 1) * 1.3 + cI * 2.6, sz = z0 + r * 2.1;
+      const col = sb[3] ?? s.color, b = shapeMesh(sb[2], col);
+      b.position.set(sx, y + .32, sz); S.add(b); (b.isGroup ? b.children : [b]).forEach(c => reg(c, i));
+      const sl = label(sb[0], sb[1], col, .7); sl.position.set(sx, y + 1.02, sz); S.add(reg(sl, i));
+      if (cI < cn2 - 1) lineTo([new THREE.Vector3(sx + .38, y + .32, sz), new THREE.Vector3(sx + 2.22, y + .32, sz)], col, i);
+      subPos[i].push(new THREE.Vector3(sx, y + .32, sz));
+    });
+  }
+  if (s.overhead) {
+    const o = s.overhead, om = new THREE.Mesh(new THREE.SphereGeometry(.6, 28, 18), mat(o.color)); om.position.set(s.x, 3.4, -.2); S.add(reg(om, i)); animated['o' + i] = om;
+    const ol = label(o.name, o.sub, o.color, .9); ol.position.set(s.x, 4.6, -.2); S.add(reg(ol, i));
+    lineTo([new THREE.Vector3(s.x, .9, 0), new THREE.Vector3(s.x, 2.8, -.2)], o.color, i, true);
+  }
+});
+
+// feedback loop
+let loopCurve = null, loopDot = null;
+if (CFG.loop) {
+  const lp = CFG.loop, a = anchors[lp.from].clone().add(new THREE.Vector3(0, lp.up ? .9 : -.9, .2)), b = subPos[lp.to[0]][lp.to[1]].clone().add(new THREE.Vector3(.35, 0, 0));
+  const mid = a.clone().add(b).multiplyScalar(.5); mid.y += lp.up ? 3.2 : -2.4; mid.z += lp.z || 0;
+  loopCurve = new THREE.QuadraticBezierCurve3(a, mid, b); lineTo(loopCurve.getPoints(40), lp.color, lp.stage, true);
+  loopDot = new THREE.Mesh(new THREE.SphereGeometry(.18, 14, 10), new THREE.MeshBasicMaterial({ color: lp.color, transparent: true })); S.add(loopDot); loopDot.userData.g = lp.stage;
+  const ll = label(lp.label, lp.sub, lp.color, .7); ll.position.copy(mid).add(new THREE.Vector3(0, lp.up ? .2 : -.2, 0)); S.add(reg(ll, lp.stage));
+}
+
+// particles
+const flow = []; for (let i = 0; i < 26; i++) { const d = new THREE.Mesh(new THREE.SphereGeometry(.13, 12, 8), new THREE.MeshBasicMaterial({ color: 0x378ADD, transparent: true })); S.add(d); flow.push({ d, t: i / 26 }); }
+const xs = CFG.stages.slice(1).map(s => s.x);
+function colorAt(x) { for (let i = xs.length - 1; i >= 0; i--) if (x >= xs[i] - .2) return CFG.stages[i + 1].flow ?? CFG.stages[i + 1].color; return 0xB4B2A9; }
+
+// camera + focus
+let cur = -1, run = true, th = -.42, ph = .42, rad = CFG.overview.r, tgt = new THREE.Vector3(...CFG.overview.t), goal = { th, ph, rad, t: tgt.clone() };
+fade.forEach(o => o.material.ub = o.material.opacity);
+function setDetail(i) {
+  const s = i < 0 ? CFG.overviewCard : CFG.stages[i];
+  $('detail').innerHTML = `<h2>${i < 0 ? s.name : (i + 1) + ' · ' + s.name}</h2><p>${s.detail}</p>` +
+    (s.subs && s.subs.length ? `<div class="chips">${s.subs.map(x => `<span class="chip">${x[0]}</span>`).join('')}</div>` : '') +
+    (s.kv ? `<dl class="kv">${s.kv.map(k => `<dt>${k[0]}</dt><dd>${k[1]}</dd>`).join('')}</dl>` : '');
+}
+function focus(i) {
+  cur = i; document.querySelectorAll('#steps li').forEach(li => li.classList.toggle('on', +li.dataset.i === i)); setDetail(i);
+  if (i < 0) goal = { th: -.3, ph: .42, rad: CFG.overview.r * Math.max(1, 1.75 / C.aspect), t: new THREE.Vector3(...CFG.overview.t) };
+  else if (i === 0) goal = { th: -.95, ph: .28, rad: 13, t: new THREE.Vector3(BX, 1, 0) };
+  else { const s = CFG.stages[i]; goal = { th: -.18, ph: s.subsAbove ? .34 : .2, rad: 17, t: new THREE.Vector3(s.x, s.subsAbove ? 1.6 : -1, s.subsAbove ? -.4 : 1.2) }; }
+  fade.forEach(o => { const on = i < 0 || o.userData.g === i || o.userData.g === -1; o.material.opacity = on ? o.material.ub : .1; });
+}
+let tourT = null;
+function stopTour() { clearInterval(tourT); tourT = null; $('tour').classList.remove('on'); $('tour').textContent = '▶ Play tour'; }
+$('tour').onclick = () => { if (tourT) return stopTour(); let i = cur; $('tour').classList.add('on'); $('tour').textContent = '■ Stop tour'; const nx = () => { i = i + 1 >= CFG.stages.length ? -1 : i + 1; focus(i); }; nx(); tourT = setInterval(nx, 5200); };
+$('pause').onclick = () => { run = !run; $('pause').textContent = run ? 'Pause' : 'Play'; };
+$('reset').onclick = () => { stopTour(); focus(-1); };
+let drag = null, moved = false; const ray = new THREE.Raycaster(), ms = new THREE.Vector2();
+cv.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY]; moved = false; cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing'; });
+cv.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; if (Math.abs(dx) + Math.abs(dy) > 3) moved = true; goal.th -= dx * .006; goal.ph = Math.max(.02, Math.min(1.4, goal.ph + dy * .005)); drag = [e.clientX, e.clientY]; });
+cv.addEventListener('pointerup', e => { cv.style.cursor = 'grab'; if (!moved) { const r = cv.getBoundingClientRect(); ms.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ms, C); const h = ray.intersectObjects(pick); if (h.length) { stopTour(); focus(h[0].object.userData.stage); } } drag = null; });
+cv.addEventListener('wheel', e => { e.preventDefault(); goal.rad = Math.max(8, Math.min(70, goal.rad + e.deltaY * .03)); }, { passive: false });
+function size() { const w = wrap.clientWidth, h = wrap.clientHeight; R.setSize(w, h, false); C.aspect = w / h; C.updateProjectionMatrix(); if (cur < 0) goal.rad = CFG.overview.r * Math.max(1, 1.75 / C.aspect); }
+new ResizeObserver(size).observe(wrap); size(); focus(-1);
+
+const clk = new THREE.Clock();
+(function loop() {
+  requestAnimationFrame(loop); const dt = Math.min(.05, clk.getDelta()), t = clk.elapsedTime;
+  th += (goal.th - th) * .07; ph += (goal.ph - ph) * .07; rad += (goal.rad - rad) * .07; tgt.lerp(goal.t, .07);
+  if (run) {
+    flow.forEach(f => { f.t = (f.t + dt * .075) % 1; if (f.t < .1) { f.d.position.copy(link.getPoint(f.t / .1)); f.d.material.color.setHex(0x378ADD); } else { const x = X0 + (f.t - .1) / .9 * (X1 - X0); f.d.position.set(x, 0, 0); f.d.material.color.setHex(colorAt(x)); } });
+    if (loopCurve) { loopDot.position.copy(loopCurve.getPoint((t * CFG.loop.speed) % 1)); loopDot.material.opacity = (cur < 0 || cur === CFG.loop.stage) ? 1 : .08; }
+    sparks.forEach(s => { const k = (Math.sin(t * 5 + s.userData.o * 3) + 1) / 2; s.material.opacity = (cur <= 0 ? 1 : .12) * k; s.scale.setScalar(.6 + k); });
+    motor.scale.setScalar(1 + .18 * Math.sin(t * 4)); brain.rotation.y = Math.PI / 2 + .08 * Math.sin(t * .5);
+    Object.entries(animated).forEach(([k, m]) => { if (String(k).startsWith('o')) m.scale.setScalar(1 + .07 * Math.sin(t * 3)); });
+    if (CFG.pulse != null && animated[CFG.pulse]) animated[CFG.pulse].scale.setScalar(1 + .05 * Math.sin(t * 3));
+    if (cur < 0 && !drag && !tourT) goal.th += dt * .02;
+  }
+  C.position.set(tgt.x + rad * Math.cos(ph) * Math.sin(th), tgt.y + rad * Math.sin(ph), tgt.z + rad * Math.cos(ph) * Math.cos(th)); C.lookAt(tgt); R.render(S, C);
+})();
+</script>
+</body>
+</html>

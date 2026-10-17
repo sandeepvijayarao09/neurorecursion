@@ -1,0 +1,42 @@
+{
+  "files": 743,
+  "recording_minutes": 62.6217440649907,
+  "fs_hz": 19531,
+  "filter": "Butterworth band-pass 300-6000 Hz (causal 2nd-order for detection)",
+  "threshold": "-4.5 x MAD noise sigma, 1.0 ms refractory",
+  "total_spikes": 23841,
+  "rate_hz": {
+    "mean": 6.343849052844263,
+    "median": 0.5936895220532358,
+    "p10": 0.0,
+    "p90": 13.02050708290678
+  },
+  "lossless_ratio": {
+    "delta+zlib": 1.5973835870348658,
+    "delta+lzma(subset)": 1.883600289745374
+  },
+  "bits_per_s_per_channel": {
+    "raw_10bit": 195310,
+    "lossless_lzma": 103689.727095127,
+    "binned_counts_20ms": 150.0,
+    "spike_events": 120.533132004041
+  },
+  "N1_1024ch_Mbps": {
+    "raw_10bit": 199.99744,
+    "lossless_lzma": 106.17828054541005,
+    "binned_counts_20ms": 0.1536,
+    "spike_events": 0.12342592717213798
+  },
+  "compression_vs_raw": {
+    "raw_10bit": 1.0,
+    "lossless_lzma": 1.883600289745374,
+    "binned_counts_20ms": 1302.0666666666666,
+    "spike_events": 1620.384343729258
+  },
+  "fits_1Mbps_radio": {
+    "raw_10bit": false,
+    "lossless_lzma": false,
+    "binned_counts_20ms": true,
+    "spike_events": true
+  }
+}

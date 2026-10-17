@@ -1,0 +1,291 @@
+{
+  "scoreboard": [
+    {
+      "version": 0,
+      "heldout_r2": 0.0427968353419535,
+      "frozen_r2": 0.03465638137205779,
+      "kept": true,
+      "edits": {},
+      "by": "-"
+    },
+    {
+      "version": 1,
+      "heldout_r2": 0.0427968353419535,
+      "frozen_r2": 0.03465638137205779,
+      "kept": false,
+      "edits": {
+        "dead_ratio": 0.15,
+        "verifier_margin": 0.02
+      },
+      "by": "nemotron",
+      "rationale": ""
+    },
+    {
+      "version": 1,
+      "heldout_r2": 0.058854067127547934,
+      "frozen_r2": 0.03465638137205779,
+      "kept": true,
+      "edits": {
+        "max_mask_frac": 0.15,
+        "verifier_margin": 0.02
+      },
+      "by": "nemotron",
+      "rationale": ""
+    }
+  ],
+  "final_playbook": {
+    "version": 1,
+    "dead_ratio": 0.2,
+    "noisy_ratio": 3.0,
+    "max_mask_frac": 0.15,
+    "verifier_margin": 0.02,
+    "coral_shrink": 1.0,
+    "max_loops": 3,
+    "agent_order": [
+      "channel_health",
+      "alignment/input",
+      "alignment/latent",
+      "intent"
+    ],
+    "disabled": [],
+    "dod": {
+      "min_intent_cos_gain": 0.0,
+      "speed_range": [
+        0.5,
+        2.0
+      ],
+      "max_masked_frac": 0.5
+    }
+  },
+  "llm_calls": [
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.9,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.6,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.9,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.4,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.8,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.7,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.0,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.9,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.5,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.5,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      3.9,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      3.2,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.9,
+      true
+    ],
+    [
+      "reviewer",
+      "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+      1.1,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.5,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.9,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.4,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.9,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.5,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.6,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.7,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.7,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.4,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      4.2,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.8,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      3.3,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.1,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      3.5,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.7,
+      true
+    ],
+    [
+      "reviewer",
+      "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+      1.0,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.8,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      3.9,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.7,
+      "error: RateLimitError"
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.8,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.2,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.3,
+      true
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      2.8,
+      true
+    ]
+  ],
+  "runtime_s": 121.0
+}

@@ -1,0 +1,68 @@
+{
+  "notes": [
+    "channel_health rarely helps (accept 0/7, mean delta -0.0787); skip it",
+    "channel_health over-masks; cap channels masked per proposal",
+    "v1 reverted, edits {'disabled': ['channel_health'], 'max_mask_frac': 0.5} did not help on held-out",
+    "raise verifier margin to resist noisy accepts",
+    "v1 reverted, edits {'verifier_margin': 0.02} did not help on held-out",
+    "soften latent alignment",
+    "v1 reverted, edits {'coral_shrink': 0.5} did not help on held-out",
+    "cap masking hard",
+    "v1 reverted, edits {'max_mask_frac': 0.15} did not help on held-out",
+    "alignment/input has high reject rate (4/5); consider lowering its priority or tightening its delta threshold",
+    "alignment/latent accepts dominate (4/6) with small positive deltas; verify if this improves decoder stability",
+    "intent accepts are low (2/3) but deltas are positive; monitor for over\u2011acceptance on noisy samples",
+    "v1 reverted, edits {'dead_ratio': 0.15, 'verifier_margin': 0.02} did not help on held-out",
+    "alignment/input high reject rate; tighten its delta threshold",
+    "alignment/latent accepts dominate with small positive deltas; verify stability impact",
+    "intent accepts are low with positive deltas; monitor for over-acceptance on noisy samples",
+    "v1 kept: {'max_mask_frac': 0.15, 'verifier_margin': 0.02}"
+  ],
+  "agent_stats": {
+    "channel_health": {
+      "accept": 0,
+      "reject": 5,
+      "iterate": 1,
+      "mean_delta": -0.0607
+    },
+    "alignment/input": {
+      "accept": 2,
+      "reject": 3,
+      "iterate": 0,
+      "mean_delta": -0.0349
+    },
+    "alignment/latent": {
+      "accept": 4,
+      "reject": 2,
+      "iterate": 0,
+      "mean_delta": 0.0317
+    },
+    "intent": {
+      "accept": 1,
+      "reject": 1,
+      "iterate": 8,
+      "mean_delta": 0.0019
+    }
+  },
+  "reverted_edits": [
+    {
+      "disabled": [
+        "channel_health"
+      ],
+      "max_mask_frac": 0.5
+    },
+    {
+      "verifier_margin": 0.02
+    },
+    {
+      "coral_shrink": 0.5
+    },
+    {
+      "max_mask_frac": 0.15
+    },
+    {
+      "dead_ratio": 0.15,
+      "verifier_margin": 0.02
+    }
+  ]
+}

@@ -1,0 +1,550 @@
+{
+  "dataset": "FALCON H1 (DANDI 000954), human 7-DoF iBCI",
+  "held_in_val_r2": 0.3398471482878133,
+  "summary": {
+    "frozen": {
+      "mean_r2": -0.0621863475155915,
+      "ci95": [
+        -0.12081565124962511,
+        -0.007837595505222106
+      ]
+    },
+    "raw_ridge_frozen": {
+      "mean_r2": 0.02019783199130946,
+      "ci95": [
+        -0.020857045371176778,
+        0.05982448830203008
+      ]
+    },
+    "agentic": {
+      "mean_r2": -0.12058599397955694,
+      "ci95": [
+        -0.47392398415358805,
+        0.0906678609229534
+      ]
+    },
+    "agentic_noverifier": {
+      "mean_r2": -1.2774423333684202,
+      "ci95": [
+        -1.74477666936307,
+        -0.9552925229527387
+      ]
+    },
+    "only_channel_health": {
+      "mean_r2": -0.012759970106005632,
+      "ci95": [
+        -0.09580803095846642,
+        0.07473078158009
+      ]
+    },
+    "only_input_gain": {
+      "mean_r2": -0.09741149193686383,
+      "ci95": [
+        -0.4452271103988101,
+        0.11640709099852461
+      ]
+    },
+    "only_latent_align": {
+      "mean_r2": -0.0621863475155915,
+      "ci95": [
+        -0.12534371793846316,
+        -0.005868727422405658
+      ]
+    },
+    "recal_fewshot": {
+      "mean_r2": 0.10560867475927462,
+      "ci95": [
+        0.048594839772680455,
+        0.15669130267029355
+      ]
+    },
+    "agentic_minus_frozen": {
+      "mean": -0.05839964646396545,
+      "ci95": [
+        -0.38738964229169026,
+        0.12356093546437107
+      ],
+      "days_improved": 6,
+      "days": 7
+    },
+    "fraction_of_recal_gain_recovered_median": 0.5543539465947758
+  },
+  "per_day": [
+    {
+      "day": "19250126",
+      "days_after_training": 6,
+      "eval_bins": 3262,
+      "frozen": 0.034503590914279014,
+      "raw_ridge_frozen": 0.10271785492223484,
+      "agentic": 0.1955863587922325,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.0500658962643899,
+          "kl_after": 0.014610864037031034,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.014610864037031034,
+          "kl_after": 0.0019208993825721409,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.0019208993825721409,
+          "kl_after": 0.03561281218359989,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.0019208993825721409,
+          "kl_after": 0.0019208993825721409,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.0019208993825721409,
+          "kl_after": 0.0011588194137481557,
+          "accepted": true
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.0011588194137481557,
+          "kl_after": 0.03491276780264663,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 19,
+        "gain_range": [
+          0.1812334805727005,
+          4.786355972290039
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -1.0744478635593886,
+      "only_channel_health": 0.17803942980710197,
+      "only_input_gain": 0.20455304432907706,
+      "only_latent_align": 0.034503590914279014,
+      "recal_fewshot": 0.20917892072183714
+    },
+    {
+      "day": "19250127",
+      "days_after_training": 7,
+      "eval_bins": 3450,
+      "frozen": -0.2032946299750805,
+      "raw_ridge_frozen": -0.07515113007966776,
+      "agentic": -0.0672525535255789,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.006878978901823553,
+          "kl_after": 0.016150630654860845,
+          "accepted": false
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.006878978901823553,
+          "kl_after": 0.002099225330697542,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.002099225330697542,
+          "kl_after": 0.053197750133517505,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.002099225330697542,
+          "kl_after": 0.0030324483472252695,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.002099225330697542,
+          "kl_after": 0.0031452882647617967,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.002099225330697542,
+          "kl_after": 0.053197750133517505,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 0,
+        "gain_range": [
+          0.33000001311302185,
+          3.0
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -1.3482749451147398,
+      "only_channel_health": -0.2032946299750805,
+      "only_input_gain": -0.0672525535255789,
+      "only_latent_align": -0.2032946299750805,
+      "recal_fewshot": -0.03916632681412159
+    },
+    {
+      "day": "19250129",
+      "days_after_training": 9,
+      "eval_bins": 3305,
+      "frozen": -0.03068772472620483,
+      "raw_ridge_frozen": 0.012526728816733732,
+      "agentic": 0.05504104915462592,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.01391415433724181,
+          "kl_after": 0.009553832526567153,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.009553832526567153,
+          "kl_after": 0.012688010209112437,
+          "accepted": false
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.009553832526567153,
+          "kl_after": 0.048616479023886355,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.009553832526567153,
+          "kl_after": 0.009553832526567153,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.009553832526567153,
+          "kl_after": 0.012688010209112437,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.009553832526567153,
+          "kl_after": 0.048616479023886355,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 19,
+        "gain_range": [
+          1.1210191249847412,
+          1.1210191249847412
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -1.1083511944154747,
+      "only_channel_health": 0.05504104915462592,
+      "only_input_gain": 0.06285222409364015,
+      "only_latent_align": -0.03068772472620483,
+      "recal_fewshot": 0.09376068638147085
+    },
+    {
+      "day": "19250202",
+      "days_after_training": 13,
+      "eval_bins": 3342,
+      "frozen": -0.13756580229682275,
+      "raw_ridge_frozen": -0.031756230339119514,
+      "agentic": -0.03109922308991851,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.03371430204327333,
+          "kl_after": 0.0099138608322611,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.0099138608322611,
+          "kl_after": 0.009204034644941166,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.009204034644941166,
+          "kl_after": 0.11807121920275597,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.009204034644941166,
+          "kl_after": 0.009204034644941166,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.009204034644941166,
+          "kl_after": 0.00985341163521226,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.009204034644941166,
+          "kl_after": 0.11807121920275597,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 25,
+        "gain_range": [
+          0.3846357762813568,
+          3.4966886043548584
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -1.168231438056951,
+      "only_channel_health": 0.0052967088883269274,
+      "only_input_gain": 0.05184513321903829,
+      "only_latent_align": -0.13756580229682275,
+      "recal_fewshot": 0.08046007170555379
+    },
+    {
+      "day": "19250203",
+      "days_after_training": 14,
+      "eval_bins": 3190,
+      "frozen": 0.018859317466118686,
+      "raw_ridge_frozen": 0.06934105442370653,
+      "agentic": 0.11355522105738335,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.006155735326739592,
+          "kl_after": 0.013326202584733556,
+          "accepted": false
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.006155735326739592,
+          "kl_after": 0.0044473487869764895,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.0044473487869764895,
+          "kl_after": 0.05570080028551551,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.0044473487869764895,
+          "kl_after": 0.02203659997928798,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.0044473487869764895,
+          "kl_after": 0.006366017445947725,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.0044473487869764895,
+          "kl_after": 0.05570080028551551,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 0,
+        "gain_range": [
+          0.33000001311302185,
+          3.0
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -1.003001088229482,
+      "only_channel_health": 0.018859317466118686,
+      "only_input_gain": 0.11355522105738335,
+      "only_latent_align": 0.018859317466118686,
+      "recal_fewshot": 0.18968141438263242
+    },
+    {
+      "day": "19250206",
+      "days_after_training": 17,
+      "eval_bins": 3377,
+      "frozen": -0.09022506202679599,
+      "raw_ridge_frozen": 0.020944600589408804,
+      "agentic": -1.1113692616356798,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.005028040843370728,
+          "kl_after": 0.006141538935151552,
+          "accepted": false
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.005028040843370728,
+          "kl_after": 0.002696347134240761,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.002696347134240761,
+          "kl_after": 0.0925142292134078,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.002696347134240761,
+          "kl_after": 0.003455286521670575,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.002696347134240761,
+          "kl_after": 0.001211791672061262,
+          "accepted": true
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.001211791672061262,
+          "kl_after": 0.08822180406741789,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 0,
+        "gain_range": [
+          0.12302673608064651,
+          9.0
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -2.568484039949648,
+      "only_channel_health": -0.09022506202679599,
+      "only_input_gain": -1.1113692616356798,
+      "only_latent_align": -0.09022506202679599,
+      "recal_fewshot": 0.08603781467930946
+    },
+    {
+      "day": "19250209",
+      "days_after_training": 20,
+      "eval_bins": 3652,
+      "frozen": -0.026894121964634192,
+      "raw_ridge_frozen": 0.04276194560586961,
+      "agentic": 0.0014364513900369605,
+      "agentic_log": [
+        {
+          "loop": 0,
+          "agent": "channel_health",
+          "kl_before": 0.02969594959059882,
+          "kl_after": 0.019937409436303635,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/input",
+          "kl_before": 0.019937409436303635,
+          "kl_after": 0.01723265859309602,
+          "accepted": true
+        },
+        {
+          "loop": 0,
+          "agent": "alignment/latent",
+          "kl_before": 0.01723265859309602,
+          "kl_after": 0.06349142337847274,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "channel_health",
+          "kl_before": 0.01723265859309602,
+          "kl_after": 0.01723265859309602,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/input",
+          "kl_before": 0.01723265859309602,
+          "kl_after": 0.017501698170776566,
+          "accepted": false
+        },
+        {
+          "loop": 1,
+          "agent": "alignment/latent",
+          "kl_before": 0.01723265859309602,
+          "kl_after": 0.06349142337847274,
+          "accepted": false
+        }
+      ],
+      "agentic_state": {
+        "masked_channels": 26,
+        "gain_range": [
+          0.3871999979019165,
+          3.5199999809265137
+        ],
+        "latent_transform": false,
+        "out_rotation_deg": 0.0,
+        "out_gain": 1.0
+      },
+      "agentic_noverifier": -0.6713057642532577,
+      "only_channel_health": -0.053036604056336444,
+      "only_input_gain": 0.06393574890407307,
+      "only_latent_align": -0.026894121964634192,
+      "recal_fewshot": 0.11930814225824019
+    }
+  ],
+  "runtime_s": 7.6,
+  "notes": [
+    "intent agent disabled (no targets in H1)",
+    "LLM planner/reviewer not used here (no CRUSOE_API_KEY); rule-based orchestration",
+    "labels used only for evaluation, except the recal_fewshot baseline"
+  ],
+  "master": "smooth"
+}

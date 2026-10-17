@@ -1,0 +1,488 @@
+{
+  "scraped_on": "2026-10-17 (latest-check pass added)",
+  "note": "Facts extracted from public sources. Each entry cites its source id. 'confidence' = primary (Neuralink / peer-reviewed), secondary (press, patents, third-party), or derived (calculated here).",
+  "sources": {
+    "S1": {
+      "title": "An Integrated Brain-Machine Interface Platform With Thousands of Channels (Musk & Neuralink, J Med Internet Res 21(10):e16194, 2019)",
+      "doi": "10.2196/16194",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6914248"
+    },
+    "S2": {
+      "title": "PRIME Study Progress Update (Neuralink, 2024-04-12)",
+      "url": "https://neuralink.com/updates/prime-study-progress-update/"
+    },
+    "S3": {
+      "title": "PRIME Study Progress Update \u2014 User Experience (Neuralink, 2024-05-08)",
+      "url": "https://neuralink.com/updates/prime-study-progress-update-user-experience/"
+    },
+    "S4": {
+      "title": "PRIME Study Progress Update \u2014 Second Participant (Neuralink, 2024-08-21)",
+      "url": "https://neuralink.com/updates/prime-study-progress-update-second-participant/"
+    },
+    "S5": {
+      "title": "A Year of Telepathy (Neuralink, 2025-02-05)",
+      "url": "https://neuralink.com/updates/a-year-of-telepathy/"
+    },
+    "S6": {
+      "title": "Two Years of Telepathy (Neuralink, 2026-01-28)",
+      "url": "https://neuralink.com/updates/two-years-of-telepathy/"
+    },
+    "S7": {
+      "title": "Pretraining on 50,000 Hours of Unlabeled Brain Data (Neuralink, 2026-10-01)",
+      "url": "https://neuralink.com/updates/pretraining-on-50000-hours/"
+    },
+    "S8": {
+      "title": "Neuralink Technology page",
+      "url": "https://neuralink.com/technology/"
+    },
+    "S9": {
+      "title": "Neuralink Compression Challenge README (now 404; quoted via search index)",
+      "url": "https://content.neuralink.com/compression-challenge/README.html"
+    },
+    "S10": {
+      "title": "US Patent Application 20210012909 \u2014 Real-time neural spike detection (Neuralink)",
+      "url": "https://patents.justia.com/patent/20210012909"
+    },
+    "S11": {
+      "title": "Spikey \u2014 community lossless compression attempt for the Neuralink challenge",
+      "url": "https://git.dominik-roth.eu/dodox/Spikey"
+    },
+    "S12": {
+      "title": "Neuralink Speech Restoration / VOICE trial page",
+      "url": "https://neuralink.com/trials/speech-restoration/"
+    },
+    "S13": {
+      "title": "datarepo \u2014 Neuralink's platform for complex data (Neuralink, 2025-06-22)",
+      "url": "https://neuralink.com/updates/datarepo/"
+    },
+    "S14": {
+      "title": "Yahoo Tech: Neuralink brain implant turned imagined speech into audible words (2026-09-18)",
+      "url": "https://tech.yahoo.com/ai/meta-ai/articles/neuralink-brain-implant-turned-imagined-160150476.html"
+    },
+    "S15": {
+      "title": "Benzinga: Musk says 'Neuralink is restoring speech' (2026-03)",
+      "url": "https://www.benzinga.com/markets/tech/26/03/51449305/elon-musk-says-neuralink-is-restoring-speech-as-brain-chip-converts-silent-brain-signals-into-audible-words"
+    },
+    "S16": {
+      "title": "Neura Pod: Neuralink Update \u2014 2026 (updated 2026-10-09; independent blog)",
+      "url": "https://www.neurapod.com/blog/neuralink-update-2026"
+    },
+    "S17": {
+      "title": "Storyboard18: Neuralink readies first human Blindsight implant",
+      "url": "https://storyboard18.com/digital/neuralink-readies-first-human-implant-of-vision-restoring-blindsight-device-88432.htm"
+    },
+    "S18": {
+      "title": "GitHub: neuralink org repositories (API listing)",
+      "url": "https://github.com/neuralink"
+    }
+  },
+  "pipeline": [
+    {
+      "stage": 1,
+      "name": "Neural source",
+      "what_happens": "Neurons in the hand-knob region of motor cortex (precentral gyrus) fire action potentials when the participant attempts/imagines hand and arm movement.",
+      "facts": [
+        {
+          "fact": "Implant target located pre-op with fMRI of attempted hand/arm movement; target on precentral gyrus",
+          "src": "S2",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Link records from the hand-knob region of motor cortex",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Signals from both hands are decodable despite single-hemisphere implant",
+          "src": "S6",
+          "confidence": "primary"
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "name": "Electrodes / threads (sensing)",
+      "what_happens": "Flexible polymer threads carrying electrode sites sit near neurons and pick up extracellular voltage (\u00b5V-scale).",
+      "facts": [
+        {
+          "fact": "N1: 1,024 electrodes across 64 flexible threads",
+          "src": "S2",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Planned increase from ~1,000 to ~3,000 electrodes; exploring thread-retention features and through-dura insertion",
+          "src": "S6",
+          "confidence": "primary"
+        },
+        {
+          "fact": "2019 platform: 32 electrodes/thread, threads 5\u201350 \u00b5m wide, 4\u20136 \u00b5m thick, polyimide with gold traces; up to 3,072 electrodes on 96 threads",
+          "src": "S1",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Electrode impedance @1 kHz: PEDOT:PSS ~37 k\u03a9, IrOx ~56 k\u03a9 (2019)",
+          "src": "S1",
+          "confidence": "primary"
+        },
+        {
+          "fact": "R1 robot inserts threads; 2019 robot: up to 6 threads (192 electrodes)/min, 87.1% insertion success",
+          "src": "S1",
+          "confidence": "primary"
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "name": "Analog front end + digitisation (on-implant ASIC)",
+      "what_happens": "Each channel is amplified, band-pass filtered and digitised by custom low-power chips.",
+      "facts": [
+        {
+          "fact": "2019 ASIC: 256 channels/ASIC, gain 42.9\u201359.4 dB, bandwidth 3 Hz\u201327 kHz, input-referred noise 5.9 \u00b5Vrms, 10-bit ADC @ 19.3 kHz, 5.2 \u00b5W/channel, ~6 mW/ASIC",
+          "src": "S1",
+          "confidence": "primary"
+        },
+        {
+          "fact": "N1: 1,024 electrodes @ ~20 kHz, 10-bit resolution \u2192 ~200 Mbps raw",
+          "src": "S9",
+          "confidence": "secondary"
+        },
+        {
+          "fact": "Raw rate check: 1024 \u00d7 20,000 \u00d7 10 bit = 204.8 Mbps",
+          "src": "derived",
+          "confidence": "derived"
+        }
+      ]
+    },
+    {
+      "stage": 4,
+      "name": "On-implant processing / compression",
+      "what_happens": "Raw broadband data is far too large for the radio, so the implant reduces it (spike detection / feature extraction / compression) before transmission.",
+      "facts": [
+        {
+          "fact": "Wireless link carries only ~1 Mbps, so >200\u00d7 reduction is required; real-time, <1 ms latency, <10 mW power budget",
+          "src": "S9",
+          "confidence": "secondary"
+        },
+        {
+          "fact": "Patent: filter signal, fit to a model, compare characteristic values to thresholds to declare a spike; fixed-point arithmetic; spikes + timestamps packetised for wireless transmission",
+          "src": "S10",
+          "confidence": "secondary"
+        },
+        {
+          "fact": "Best community lossless ratio ~4.4\u00d7, implying the production path is lossy (spike events / features), not raw waveform",
+          "src": "S11",
+          "confidence": "secondary"
+        },
+        {
+          "fact": "Custom low-power chips process neural signals before wireless transmission",
+          "src": "S8",
+          "confidence": "primary"
+        },
+        {
+          "fact": "After thread retraction (2024) Neuralink 'modified the recording algorithm to be more sensitive to neural population signals'",
+          "src": "S3",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Decoder input is spiking events per channel (participant 1 alone: 9,000+ hours \u2248 22.4 billion spikes)",
+          "src": "S7",
+          "confidence": "primary"
+        }
+      ]
+    },
+    {
+      "stage": 5,
+      "name": "Wireless link + power",
+      "what_happens": "Processed neural data is radioed through the scalp to an external device; battery recharged inductively.",
+      "facts": [
+        {
+          "fact": "Data transmitted wirelessly to the Neuralink Application on a computer/phone; battery inductively recharged by N1 Charger; no physical connectors",
+          "src": "S2",
+          "confidence": "primary"
+        },
+        {
+          "fact": "2019 research system used wired USB-C and 10 GbE UDP multicast base station (pre-wireless)",
+          "src": "S1",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Radio commonly described as Bluetooth/BLE-class",
+          "src": "secondary press",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "stage": 6,
+      "name": "Decoding (Neuralink Application, ML)",
+      "what_happens": "ML models convert spike streams into intended actions (cursor velocity, click type, finger/key, robot-arm DOF).",
+      "facts": [
+        {
+          "fact": "Decoders are user-specific and trained via calibration tasks; users averaged 55 min/week of calibration (old system ~10 min/day)",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "2026 encoder: Mamba (state-space) backbone; spikes treated as tokens with per-channel learned embeddings (POYO-style); Perceiver input layer; fully causal",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Self-supervised objective: spatially masked auto-Poisson regression \u2014 feed half the channels, predict the other half",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Pretrained on >50,000 h unlabeled free-use neural data; 30 s labeled embeddings \u2248 3.5 min raw-spike calibration",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Decoders now last >1 week; some >3 weeks; one usable 20 months after calibration",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Cross-participant transfer: P9-trained model worked for P2 with 99% weights frozen, beating P2's own decoder",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Exploring decoding of cursor/target position and 'cursor teleportation' (>10 BPS in initial tests)",
+          "src": "S7",
+          "confidence": "primary"
+        }
+      ]
+    },
+    {
+      "stage": 7,
+      "name": "Post-processing / UI",
+      "what_happens": "Decoded intents are smoothed, gated and mapped to OS input events and app modes.",
+      "facts": [
+        {
+          "fact": "Previously used smoothing, low-velocity suppression and click post-processing (added delay); pretrained decoders made several of these unnecessary",
+          "src": "S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Mode switcher UI maps intended movements to left/right/middle click, zoom, scroll, pan, drag",
+          "src": "S4",
+          "confidence": "primary"
+        }
+      ]
+    },
+    {
+      "stage": 8,
+      "name": "Outputs",
+      "what_happens": "Digital and physical actions.",
+      "facts": [
+        {
+          "fact": "Cursor + multi-click control of laptop/phone: chess, Civilization VI, Mario Kart, Counter-Strike, CAD (Fusion 360), Illustrator",
+          "src": "S3,S4,S5",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Ten-finger 'keyboard for the mind' typing up to 40 WPM",
+          "src": "S6",
+          "confidence": "primary"
+        },
+        {
+          "fact": "CONVOY: assistive robotic arm control (feeding, gesturing); 7+ DOF in simulation",
+          "src": "S5,S6,S7",
+          "confidence": "primary"
+        },
+        {
+          "fact": "VOICE trial targets speech at ~140 WPM from speech-production cortex",
+          "src": "S6",
+          "confidence": "primary"
+        },
+        {
+          "fact": "Blindsight (vision) received FDA Breakthrough Device Designation 2024-09-17",
+          "src": "Neuralink updates index",
+          "confidence": "primary"
+        }
+      ]
+    }
+  ],
+  "performance_timeline": [
+    {
+      "date": "2024-01/02",
+      "metric": "BPS",
+      "value": 4.6,
+      "who": "P1 (Noland), first session",
+      "src": "S3"
+    },
+    {
+      "date": "2024-05",
+      "metric": "BPS",
+      "value": 8.0,
+      "who": "P1",
+      "src": "S3"
+    },
+    {
+      "date": "2024",
+      "metric": "BPS (able-bodied mouse reference)",
+      "value": "8\u201310",
+      "who": "Neuralink engineers / typical users",
+      "src": "S3,S6"
+    },
+    {
+      "date": "2026-01",
+      "metric": "BPS",
+      "value": ">10",
+      "who": "Nick (first week)",
+      "src": "S6"
+    },
+    {
+      "date": "pre-2026-10",
+      "metric": "BPS (prior record)",
+      "value": 10.39,
+      "who": "Neuralink participant",
+      "src": "S7"
+    },
+    {
+      "date": "2026-10",
+      "metric": "BPS (record)",
+      "value": 11.32,
+      "who": "P15, pretrained decoder",
+      "src": "S7"
+    },
+    {
+      "date": "2026-01",
+      "metric": "Typing WPM",
+      "value": 40,
+      "who": "Jake, 10-finger decoding",
+      "src": "S6"
+    }
+  ],
+  "program_stats": [
+    {
+      "date": "2025-02",
+      "stat": "3 participants; >670 implant-days; >4,900 h use; 6.5 h/day independent use",
+      "src": "S5"
+    },
+    {
+      "date": "2026-01",
+      "stat": "21 participants enrolled worldwide; higher signal quality in 18 of 20 post-mitigation participants; zero serious device-related adverse events",
+      "src": "S6"
+    },
+    {
+      "date": "2026-10",
+      "stat": ">50,000 h unlabeled neural data streamed by participants",
+      "src": "S7"
+    }
+  ],
+  "trials": [
+    {
+      "name": "PRIME",
+      "id": "NCT06429735",
+      "purpose": "Safety + initial function, cursor control (US)"
+    },
+    {
+      "name": "CAN-PRIME",
+      "id": "NCT06700304",
+      "purpose": "Canada"
+    },
+    {
+      "name": "GB-PRIME",
+      "id": null,
+      "purpose": "Great Britain, launched 2025-07-31"
+    },
+    {
+      "name": "CONVOY",
+      "id": "NCT06710626",
+      "purpose": "Assistive robotic arm"
+    },
+    {
+      "name": "VOICE",
+      "id": "NCT07224256",
+      "purpose": "Speech restoration"
+    }
+  ],
+  "latest_as_of_2026_10_17": {
+    "latest_model": {
+      "name": "Participant-specific self-supervised neural encoder + task decoder heads",
+      "announced": "2026-10-01",
+      "src": "S7",
+      "confidence": "primary",
+      "architecture": [
+        "spike-as-token input with per-channel learned embeddings (POYO-style)",
+        "Perceiver input layer",
+        "Mamba state-space backbone (causal, constant low-latency inference)",
+        "small decoder heads: cursor velocity, click probabilities, robot-arm 7+ DOF; linear position probes for 'cursor teleportation'"
+      ],
+      "pretraining": "spatially masked auto-Poisson regression on >50,000 h unlabeled free-use recordings (P1 alone >9,000 h / 22.4B spikes)",
+      "results": {
+        "record_bps": 11.32,
+        "previous_record_bps": 10.39,
+        "participants_with_PRs": 6,
+        "participants_above_10.39": 3,
+        "median_user_bps": "~10",
+        "calibration": "10 min/day -> as low as 10 min/week; 30 s embeddings ~= 3.5 min raw spikes",
+        "longevity": ">1 week typical, >3 weeks some, usable at 20 months in one case"
+      },
+      "limits": "all live results use single-participant pretraining; multi-participant pooled models not yet better online; cross-participant transfer shown (P9->P2, 99% weights frozen)",
+      "open_weights": false
+    },
+    "latest_data": {
+      "neural_data_volume": ">50,000 hours unlabeled (2026-10-01)",
+      "src": "S7",
+      "public_release": "None. Neuralink has not released neural data or model weights. Its only open-source data tool is the datarepo catalog library (2025-06-22), explicitly 'not a release of any Neuralink data'. The Hugging Face 'neuralink' account (cartpole, xlm-roberta) appears unrelated to the company.",
+      "src_list": [
+        "S13",
+        "S18"
+      ],
+      "participants": "21 enrolled (Neuralink, 2026-01-28); ~27 per independent tracker (2026-10)",
+      "src_list2": [
+        "S6",
+        "S16"
+      ]
+    },
+    "latest_hardware_surgery": [
+      {
+        "date": "2026-05",
+        "item": "First transdural (through-dura) insertion, UHN Toronto; Lee Marten (ALS) first such patient",
+        "src": "S16",
+        "confidence": "secondary"
+      },
+      {
+        "date": "2026",
+        "item": "Next-gen ~3,000-electrode implant planned; no confirmed human deployment found",
+        "src": "S6",
+        "confidence": "primary (plan only)"
+      },
+      {
+        "date": "2026-06",
+        "item": "Reported Samsung order for next-gen implant processor; PCTFE enclosure patent published",
+        "src": "S16",
+        "confidence": "secondary"
+      }
+    ],
+    "latest_outputs": [
+      {
+        "date": "2026-09-16",
+        "item": "VOICE trial video: participant produced 'I love you' as synthesized speech in pre-illness voice from silent/imagined speech; phoneme decoding + personalised TTS; delay of several seconds; no accuracy/latency figures published",
+        "src": "S14",
+        "confidence": "secondary"
+      },
+      {
+        "date": "2026-03",
+        "item": "First thought-to-speech demo (Kenneth Shock, ALS, implanted Jan 2026)",
+        "src": "S15,S14",
+        "confidence": "secondary"
+      },
+      {
+        "date": "current",
+        "item": "VOICE (NCT07224256) at UT Southwestern; output verbal thought as text or speech; target ~140 WPM",
+        "src": "S12,S6",
+        "confidence": "primary"
+      },
+      {
+        "date": "2026-10",
+        "item": "Blindsight: no confirmed first human implant found",
+        "src": "S17",
+        "confidence": "secondary"
+      }
+    ]
+  }
+}

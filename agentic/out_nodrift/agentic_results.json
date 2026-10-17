@@ -1,0 +1,134 @@
+[
+  {
+    "day": 1,
+    "frozen": {
+      "r2": 0.1911755234373576,
+      "acc": 0.0,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.1911755234373576,
+      "acc": 0.0,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": -0.08637234515333425,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 0,
+      "gain_range": [
+        1.0,
+        1.0
+      ],
+      "latent_transform": false,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.30659657245128447,
+      "speed_ratio": 0.7434317301212406,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 2,
+    "frozen": {
+      "r2": 0.11023554827934717,
+      "acc": 0.25,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.11023554827934717,
+      "acc": 0.25,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": -0.03299243595601642,
+      "acc": 0.25,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 0,
+      "gain_range": [
+        1.0,
+        1.0
+      ],
+      "latent_transform": false,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.1893316029272552,
+      "speed_ratio": 0.9430352259593782,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 3,
+    "frozen": {
+      "r2": 0.1744909540266117,
+      "acc": 0.375,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.1744909540266117,
+      "acc": 0.375,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": 0.009062426146996372,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 0,
+      "gain_range": [
+        1.0,
+        1.0
+      ],
+      "latent_transform": false,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.1752676381641862,
+      "speed_ratio": 1.1208956455353576,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 4,
+    "frozen": {
+      "r2": 0.15134865971946804,
+      "acc": 0.5,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.15134865971946804,
+      "acc": 0.5,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": 0.021459194080205468,
+      "acc": 0.25,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 0,
+      "gain_range": [
+        1.0,
+        1.0
+      ],
+      "latent_transform": false,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.13967976789570258,
+      "speed_ratio": 1.1944507090670817,
+      "speed_ok": true
+    }
+  }
+]

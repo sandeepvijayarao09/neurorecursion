@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "dead_ratio": 0.2,
+  "noisy_ratio": 3.0,
+  "max_mask_frac": 0.15,
+  "verifier_margin": 0.02,
+  "coral_shrink": 1.0,
+  "max_loops": 3,
+  "agent_order": [
+    "channel_health",
+    "alignment/input",
+    "alignment/latent",
+    "intent"
+  ],
+  "disabled": [],
+  "dod": {
+    "min_intent_cos_gain": 0.0,
+    "speed_range": [
+      0.5,
+      2.0
+    ],
+    "max_masked_frac": 0.5
+  }
+}

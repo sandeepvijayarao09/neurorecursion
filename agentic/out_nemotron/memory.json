@@ -1,0 +1,58 @@
+{
+  "notes": [
+    "channel_health rejects dominate; consider raising dead_ratio to reduce load",
+    "alignment/latent accepts with positive delta; promote before alignment/input",
+    "intent has 1:1 accept/reject and near-zero delta; review if disabled is needed",
+    "v1 reverted, edits {'dead_ratio': 0.35, 'verifier_margin': 0.02} did not help on held-out",
+    "channel_health reject rate is high (5/6); raising dead_ratio may reduce its load",
+    "alignment/latent has positive mean_delta (0.03) and strong accept count; prioritize in agent_order",
+    "alignment/input rejects dominate (5/5); consider disabling or reordering to protect decoder stability",
+    "v1 reverted, edits {'dead_ratio': 0.25, 'verifier_margin': 0.015} did not help on held-out",
+    "channel_health rejects dominate; raising dead_ratio to 0.25 reduces its load without disabling it",
+    "alignment/latent accepts with positive delta (0.03); prioritize in agent_order before alignment/input",
+    "alignment/input rejects dominate (5/5); disabling protects decoder stability while other agents are tuned",
+    "v1 reverted, edits {'dead_ratio': 0.25, 'disabled': ['alignment/input']} did not help on held-out"
+  ],
+  "agent_stats": {
+    "channel_health": {
+      "accept": 1,
+      "reject": 5,
+      "iterate": 1,
+      "mean_delta": -0.0601
+    },
+    "alignment/latent": {
+      "accept": 4,
+      "reject": 2,
+      "iterate": 0,
+      "mean_delta": 0.029
+    },
+    "alignment/input": {
+      "accept": 0,
+      "reject": 4,
+      "iterate": 2,
+      "mean_delta": -0.0311
+    },
+    "intent": {
+      "accept": 2,
+      "reject": 2,
+      "iterate": 4,
+      "mean_delta": -0.0015
+    }
+  },
+  "reverted_edits": [
+    {
+      "dead_ratio": 0.35,
+      "verifier_margin": 0.02
+    },
+    {
+      "dead_ratio": 0.25,
+      "verifier_margin": 0.015
+    },
+    {
+      "dead_ratio": 0.25,
+      "disabled": [
+        "alignment/input"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+units=152 bins=38643 (12.9 min) trials=250
+Pretraining spike encoder (no behaviour labels)…
+  constant-rate baseline NLL 0.2093
+  pretrain epoch  1  masked Poisson NLL 0.3244
+  pretrain epoch  2  masked Poisson NLL 0.2094
+  pretrain epoch  3  masked Poisson NLL 0.2094
+  pretrain epoch  4  masked Poisson NLL 0.2083
+  pretrain epoch  5  masked Poisson NLL 0.2078
+  pretrain epoch  6  masked Poisson NLL 0.2074
+  pretrain epoch  7  masked Poisson NLL 0.2071
+  pretrain epoch  8  masked Poisson NLL 0.2070
+  pretrain epoch  9  masked Poisson NLL 0.2065
+  pretrain epoch 10  masked Poisson NLL 0.2057
+  pretrain epoch 11  masked Poisson NLL 0.2053
+  pretrain epoch 12  masked Poisson NLL 0.2051
+  pretrain epoch 13  masked Poisson NLL 0.2042
+  pretrain epoch 14  masked Poisson NLL 0.2038
+  pretrain epoch 15  masked Poisson NLL 0.2033
+  pretrain epoch 16  masked Poisson NLL 0.2026
+  pretrain epoch 17  masked Poisson NLL 0.2024
+  pretrain epoch 18  masked Poisson NLL 0.2021
+  pretrain epoch 19  masked Poisson NLL 0.2021
+  pretrain epoch 20  masked Poisson NLL 0.2020
+  pretrain epoch 21  masked Poisson NLL 0.2014
+  pretrain epoch 22  masked Poisson NLL 0.2018
+  pretrain epoch 23  masked Poisson NLL 0.2011
+  pretrain epoch 24  masked Poisson NLL 0.2010
+  pretrain epoch 25  masked Poisson NLL 0.2010
+  pretrain epoch 26  masked Poisson NLL 0.2006
+  pretrain epoch 27  masked Poisson NLL 0.2005
+  pretrain epoch 28  masked Poisson NLL 0.2005
+  pretrain epoch 29  masked Poisson NLL 0.2006
+  pretrain epoch 30  masked Poisson NLL 0.2005
+  labels    2% (  10.7 s): raw-spike R²=0.015  embedding R²=0.236
+  labels    5% (  26.9 s): raw-spike R²=0.194  embedding R²=0.281
+  labels   10% (  53.7 s): raw-spike R²=0.260  embedding R²=0.338
+  labels   25% ( 134.4 s): raw-spike R²=0.278  embedding R²=0.383
+  labels   50% ( 268.8 s): raw-spike R²=0.330  embedding R²=0.426
+  labels  100% ( 537.6 s): raw-spike R²=0.368  embedding R²=0.438
+  movement-period R²: {'ridge_raw_spikes': 0.4712809023390309, 'pretrained_embeddings': 0.5288920057702831}
+{
+  "velocity_r2_test": {
+    "ridge_raw_spikes": 0.3684740161947284,
+    "pretrained_embeddings": 0.43764308049469874
+  },
+  "offline_selection_bps": [
+    {
+      "decoder": "true hand (upper bound)",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 48,
+      "accuracy": 0.96,
+      "seconds": 77.4970000000011,
+      "bps": 1.6663654904660563
+    },
+    {
+      "decoder": "ridge on raw spikes",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 31,
+      "accuracy": 0.62,
+      "seconds": 77.4970000000011,
+      "bps": 0.4347040409911452
+    },
+    {
+      "decoder": "pretrained encoder + linear head",
+      "n_targets": 8,
+      "trials": 50,
+      "correct": 23,
+      "accuracy": 0.46,
+      "seconds": 77.4970000000011,
+      "bps": 0.0
+    }
+  ],
+  "runtime_s": 94.8
+}

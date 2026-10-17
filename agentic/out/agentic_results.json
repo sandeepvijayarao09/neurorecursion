@@ -1,0 +1,134 @@
+[
+  {
+    "day": 1,
+    "frozen": {
+      "r2": 0.05918457208824235,
+      "acc": 0.0,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.09436373259854919,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": 0.06378780851714971,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 7,
+      "gain_range": [
+        1.0482758283615112,
+        1.0482758283615112
+      ],
+      "latent_transform": true,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.3180084052548894,
+      "speed_ratio": 0.7312513487880605,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 2,
+    "frozen": {
+      "r2": 0.048871964029716275,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.057890502447006165,
+      "acc": 0.0,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": 0.060507168200650996,
+      "acc": 0.0,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 20,
+      "gain_range": [
+        1.1515151262283325,
+        1.1515151262283325
+      ],
+      "latent_transform": true,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.26799593047787423,
+      "speed_ratio": 0.8805570274556688,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 3,
+    "frozen": {
+      "r2": 0.017673939914276682,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": 0.00046438735576842527,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": 0.053749471966050455,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 20,
+      "gain_range": [
+        1.1515151262283325,
+        1.1515151262283325
+      ],
+      "latent_transform": true,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.18385797003150045,
+      "speed_ratio": 0.7157068983943325,
+      "speed_ok": true
+    }
+  },
+  {
+    "day": 4,
+    "frozen": {
+      "r2": -0.002008038948088098,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agentic": {
+      "r2": -0.09111085417593712,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "recal": {
+      "r2": -0.013794958348799846,
+      "acc": 0.125,
+      "bps": 0.0
+    },
+    "agent_state": {
+      "masked_channels": 67,
+      "gain_range": [
+        0.5901176333427429,
+        5.364706039428711
+      ],
+      "latent_transform": true,
+      "out_rotation_deg": 0.0,
+      "out_gain": 1.0
+    },
+    "verifier": {
+      "intent_cos": 0.19322832919246946,
+      "speed_ratio": 0.7844497582894276,
+      "speed_ok": true
+    }
+  }
+]

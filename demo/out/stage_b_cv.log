@@ -1,0 +1,232 @@
+fold 1/5: test trials 0-49
+  constant-rate baseline NLL 0.2100
+  pretrain epoch  1  masked Poisson NLL 0.3264
+  pretrain epoch  2  masked Poisson NLL 0.2099
+  pretrain epoch  3  masked Poisson NLL 0.2097
+  pretrain epoch  4  masked Poisson NLL 0.2089
+  pretrain epoch  5  masked Poisson NLL 0.2087
+  pretrain epoch  6  masked Poisson NLL 0.2081
+  pretrain epoch  7  masked Poisson NLL 0.2072
+  pretrain epoch  8  masked Poisson NLL 0.2070
+  pretrain epoch  9  masked Poisson NLL 0.2065
+  pretrain epoch 10  masked Poisson NLL 0.2057
+  pretrain epoch 11  masked Poisson NLL 0.2056
+  pretrain epoch 12  masked Poisson NLL 0.2052
+  pretrain epoch 13  masked Poisson NLL 0.2050
+  pretrain epoch 14  masked Poisson NLL 0.2048
+  pretrain epoch 15  masked Poisson NLL 0.2045
+  pretrain epoch 16  masked Poisson NLL 0.2042
+  pretrain epoch 17  masked Poisson NLL 0.2035
+  pretrain epoch 18  masked Poisson NLL 0.2032
+  pretrain epoch 19  masked Poisson NLL 0.2029
+  pretrain epoch 20  masked Poisson NLL 0.2027
+  pretrain epoch 21  masked Poisson NLL 0.2022
+  pretrain epoch 22  masked Poisson NLL 0.2025
+  pretrain epoch 23  masked Poisson NLL 0.2021
+  pretrain epoch 24  masked Poisson NLL 0.2015
+  pretrain epoch 25  masked Poisson NLL 0.2014
+  pretrain epoch 26  masked Poisson NLL 0.2010
+  pretrain epoch 27  masked Poisson NLL 0.2011
+  pretrain epoch 28  masked Poisson NLL 0.2009
+  pretrain epoch 29  masked Poisson NLL 0.2013
+  pretrain epoch 30  masked Poisson NLL 0.2013
+  R² all raw=0.380 emb=0.410 | movement raw=0.484 emb=0.539 | acc true=0.80 raw=0.46 emb=0.34
+fold 2/5: test trials 50-99
+  constant-rate baseline NLL 0.2097
+  pretrain epoch  1  masked Poisson NLL 0.3319
+  pretrain epoch  2  masked Poisson NLL 0.2096
+  pretrain epoch  3  masked Poisson NLL 0.2093
+  pretrain epoch  4  masked Poisson NLL 0.2085
+  pretrain epoch  5  masked Poisson NLL 0.2080
+  pretrain epoch  6  masked Poisson NLL 0.2076
+  pretrain epoch  7  masked Poisson NLL 0.2072
+  pretrain epoch  8  masked Poisson NLL 0.2073
+  pretrain epoch  9  masked Poisson NLL 0.2072
+  pretrain epoch 10  masked Poisson NLL 0.2069
+  pretrain epoch 11  masked Poisson NLL 0.2065
+  pretrain epoch 12  masked Poisson NLL 0.2062
+  pretrain epoch 13  masked Poisson NLL 0.2056
+  pretrain epoch 14  masked Poisson NLL 0.2054
+  pretrain epoch 15  masked Poisson NLL 0.2041
+  pretrain epoch 16  masked Poisson NLL 0.2041
+  pretrain epoch 17  masked Poisson NLL 0.2037
+  pretrain epoch 18  masked Poisson NLL 0.2037
+  pretrain epoch 19  masked Poisson NLL 0.2035
+  pretrain epoch 20  masked Poisson NLL 0.2031
+  pretrain epoch 21  masked Poisson NLL 0.2029
+  pretrain epoch 22  masked Poisson NLL 0.2029
+  pretrain epoch 23  masked Poisson NLL 0.2025
+  pretrain epoch 24  masked Poisson NLL 0.2023
+  pretrain epoch 25  masked Poisson NLL 0.2019
+  pretrain epoch 26  masked Poisson NLL 0.2016
+  pretrain epoch 27  masked Poisson NLL 0.2016
+  pretrain epoch 28  masked Poisson NLL 0.2011
+  pretrain epoch 29  masked Poisson NLL 0.2012
+  pretrain epoch 30  masked Poisson NLL 0.2012
+  R² all raw=0.394 emb=0.445 | movement raw=0.470 emb=0.499 | acc true=0.90 raw=0.58 emb=0.38
+fold 3/5: test trials 100-149
+  constant-rate baseline NLL 0.2102
+  pretrain epoch  1  masked Poisson NLL 0.3207
+  pretrain epoch  2  masked Poisson NLL 0.2102
+  pretrain epoch  3  masked Poisson NLL 0.2096
+  pretrain epoch  4  masked Poisson NLL 0.2089
+  pretrain epoch  5  masked Poisson NLL 0.2084
+  pretrain epoch  6  masked Poisson NLL 0.2079
+  pretrain epoch  7  masked Poisson NLL 0.2074
+  pretrain epoch  8  masked Poisson NLL 0.2069
+  pretrain epoch  9  masked Poisson NLL 0.2067
+  pretrain epoch 10  masked Poisson NLL 0.2064
+  pretrain epoch 11  masked Poisson NLL 0.2060
+  pretrain epoch 12  masked Poisson NLL 0.2056
+  pretrain epoch 13  masked Poisson NLL 0.2049
+  pretrain epoch 14  masked Poisson NLL 0.2047
+  pretrain epoch 15  masked Poisson NLL 0.2040
+  pretrain epoch 16  masked Poisson NLL 0.2042
+  pretrain epoch 17  masked Poisson NLL 0.2041
+  pretrain epoch 18  masked Poisson NLL 0.2034
+  pretrain epoch 19  masked Poisson NLL 0.2030
+  pretrain epoch 20  masked Poisson NLL 0.2028
+  pretrain epoch 21  masked Poisson NLL 0.2025
+  pretrain epoch 22  masked Poisson NLL 0.2022
+  pretrain epoch 23  masked Poisson NLL 0.2025
+  pretrain epoch 24  masked Poisson NLL 0.2020
+  pretrain epoch 25  masked Poisson NLL 0.2018
+  pretrain epoch 26  masked Poisson NLL 0.2013
+  pretrain epoch 27  masked Poisson NLL 0.2014
+  pretrain epoch 28  masked Poisson NLL 0.2011
+  pretrain epoch 29  masked Poisson NLL 0.2014
+  pretrain epoch 30  masked Poisson NLL 0.2012
+  R² all raw=0.371 emb=0.362 | movement raw=0.481 emb=0.447 | acc true=0.80 raw=0.48 emb=0.44
+fold 4/5: test trials 150-199
+  constant-rate baseline NLL 0.2094
+  pretrain epoch  1  masked Poisson NLL 0.3195
+  pretrain epoch  2  masked Poisson NLL 0.2090
+  pretrain epoch  3  masked Poisson NLL 0.2082
+  pretrain epoch  4  masked Poisson NLL 0.2078
+  pretrain epoch  5  masked Poisson NLL 0.2072
+  pretrain epoch  6  masked Poisson NLL 0.2066
+  pretrain epoch  7  masked Poisson NLL 0.2065
+  pretrain epoch  8  masked Poisson NLL 0.2058
+  pretrain epoch  9  masked Poisson NLL 0.2058
+  pretrain epoch 10  masked Poisson NLL 0.2057
+  pretrain epoch 11  masked Poisson NLL 0.2047
+  pretrain epoch 12  masked Poisson NLL 0.2044
+  pretrain epoch 13  masked Poisson NLL 0.2037
+  pretrain epoch 14  masked Poisson NLL 0.2029
+  pretrain epoch 15  masked Poisson NLL 0.2029
+  pretrain epoch 16  masked Poisson NLL 0.2025
+  pretrain epoch 17  masked Poisson NLL 0.2024
+  pretrain epoch 18  masked Poisson NLL 0.2019
+  pretrain epoch 19  masked Poisson NLL 0.2017
+  pretrain epoch 20  masked Poisson NLL 0.2014
+  pretrain epoch 21  masked Poisson NLL 0.2014
+  pretrain epoch 22  masked Poisson NLL 0.2012
+  pretrain epoch 23  masked Poisson NLL 0.2010
+  pretrain epoch 24  masked Poisson NLL 0.2009
+  pretrain epoch 25  masked Poisson NLL 0.2009
+  pretrain epoch 26  masked Poisson NLL 0.2004
+  pretrain epoch 27  masked Poisson NLL 0.2003
+  pretrain epoch 28  masked Poisson NLL 0.2002
+  pretrain epoch 29  masked Poisson NLL 0.1998
+  pretrain epoch 30  masked Poisson NLL 0.2002
+  R² all raw=0.330 emb=0.413 | movement raw=0.435 emb=0.485 | acc true=0.90 raw=0.52 emb=0.46
+fold 5/5: test trials 200-249
+  constant-rate baseline NLL 0.2093
+  pretrain epoch  1  masked Poisson NLL 0.3212
+  pretrain epoch  2  masked Poisson NLL 0.2095
+  pretrain epoch  3  masked Poisson NLL 0.2092
+  pretrain epoch  4  masked Poisson NLL 0.2090
+  pretrain epoch  5  masked Poisson NLL 0.2078
+  pretrain epoch  6  masked Poisson NLL 0.2069
+  pretrain epoch  7  masked Poisson NLL 0.2068
+  pretrain epoch  8  masked Poisson NLL 0.2066
+  pretrain epoch  9  masked Poisson NLL 0.2064
+  pretrain epoch 10  masked Poisson NLL 0.2055
+  pretrain epoch 11  masked Poisson NLL 0.2052
+  pretrain epoch 12  masked Poisson NLL 0.2049
+  pretrain epoch 13  masked Poisson NLL 0.2048
+  pretrain epoch 14  masked Poisson NLL 0.2044
+  pretrain epoch 15  masked Poisson NLL 0.2037
+  pretrain epoch 16  masked Poisson NLL 0.2036
+  pretrain epoch 17  masked Poisson NLL 0.2034
+  pretrain epoch 18  masked Poisson NLL 0.2031
+  pretrain epoch 19  masked Poisson NLL 0.2027
+  pretrain epoch 20  masked Poisson NLL 0.2018
+  pretrain epoch 21  masked Poisson NLL 0.2019
+  pretrain epoch 22  masked Poisson NLL 0.2017
+  pretrain epoch 23  masked Poisson NLL 0.2012
+  pretrain epoch 24  masked Poisson NLL 0.2013
+  pretrain epoch 25  masked Poisson NLL 0.2006
+  pretrain epoch 26  masked Poisson NLL 0.2008
+  pretrain epoch 27  masked Poisson NLL 0.2006
+  pretrain epoch 28  masked Poisson NLL 0.2004
+  pretrain epoch 29  masked Poisson NLL 0.2003
+  pretrain epoch 30  masked Poisson NLL 0.2000
+  R² all raw=0.368 emb=0.532 | movement raw=0.471 emb=0.595 | acc true=0.96 raw=0.62 emb=0.44
+{
+  "r2_all_mean": {
+    "raw": 0.36870471715631414,
+    "emb": 0.4326077663647518
+  },
+  "r2_movement_mean": {
+    "raw": 0.4683422956011397,
+    "emb": 0.512932816254843
+  },
+  "label_efficiency_mean_r2": {
+    "0.02": {
+      "raw": 0.17659008925665187,
+      "emb": 0.26764116399680904
+    },
+    "0.05": {
+      "raw": 0.2462491491034604,
+      "emb": 0.3498519865779937
+    },
+    "0.1": {
+      "raw": 0.27367410997737285,
+      "emb": 0.3799380184175851
+    },
+    "0.25": {
+      "raw": 0.3161490791718205,
+      "emb": 0.40232088036210634
+    },
+    "0.5": {
+      "raw": 0.34692254649416043,
+      "emb": 0.41940137337522093
+    },
+    "1.0": {
+      "raw": 0.36870471715631414,
+      "emb": 0.4326077663647518
+    }
+  },
+  "selection": {
+    "true": {
+      "accuracy": 0.872,
+      "bps": 1.3298764669846264,
+      "bps_95ci": [
+        1.1786703612231841,
+        1.4735928630354764
+      ]
+    },
+    "raw": {
+      "accuracy": 0.532,
+      "bps": 0.1143979756545915,
+      "bps_95ci": [
+        0.0,
+        0.3284513206331447
+      ]
+    },
+    "emb": {
+      "accuracy": 0.412,
+      "bps": 0.0,
+      "bps_95ci": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "accuracy_diff_emb_minus_raw_95ci": [
+    -0.192,
+    -0.04390000000000053
+  ],
+  "runtime_s": 471.4
+}
