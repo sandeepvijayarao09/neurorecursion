@@ -1,0 +1,243 @@
+{
+  "v3_split_warmsplit": {
+    "rows": [
+      {
+        "session": "19250126T113454",
+        "frozen": -0.12104327121922782,
+        "stateless": 0.043451290923013634,
+        "recal_fewshot": 0.08724671274527862,
+        "agentic": 0.06844750218880642,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250126T114029",
+        "frozen": 0.008183111028127379,
+        "stateless": 0.21595330407749813,
+        "recal_fewshot": 0.17329053239322198,
+        "agentic": 0.14469393754272306,
+        "accepted": [
+          "alignment/input",
+          "channel_memory"
+        ],
+        "pruned": [],
+        "start": "memory (19250126T113454)",
+        "credit": []
+      },
+      {
+        "session": "19250127T120333",
+        "frozen": -0.4961469691987392,
+        "stateless": -0.10204331778463545,
+        "recal_fewshot": -0.14686723261042514,
+        "agentic": -0.10204331778463545,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250127T120826",
+        "frozen": -0.10711072190183482,
+        "stateless": -0.14061582706844017,
+        "recal_fewshot": -0.013794693644426996,
+        "agentic": -0.14061582706844017,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250129T112555",
+        "frozen": -0.044840387542739765,
+        "stateless": 0.09327486071208166,
+        "recal_fewshot": 0.1648475185537473,
+        "agentic": 0.14263178757858647,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250129T113059",
+        "frozen": -0.26547239184981947,
+        "stateless": -0.18386759624433394,
+        "recal_fewshot": -0.09266898975319586,
+        "agentic": -0.137092323811465,
+        "accepted": [],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "memory (19250129T112555)",
+        "credit": []
+      },
+      {
+        "session": "19250202T113958",
+        "frozen": -0.48727285840215623,
+        "stateless": -0.05127946149285418,
+        "recal_fewshot": -0.0719736410894567,
+        "agentic": -0.013094262794093536,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250202T114452",
+        "frozen": -0.12237676959120385,
+        "stateless": -0.08208085401879701,
+        "recal_fewshot": 0.07146940534334563,
+        "agentic": -0.12237676959120385,
+        "accepted": [],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250203T113515",
+        "frozen": 0.0037177333984009164,
+        "stateless": 0.018885759766662975,
+        "recal_fewshot": 0.1397351530234623,
+        "agentic": 0.0037177333984009164,
+        "accepted": [],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250203T114018",
+        "frozen": -0.05779656865060745,
+        "stateless": -0.05779656865060745,
+        "recal_fewshot": 0.16521980779147466,
+        "agentic": -0.05779656865060745,
+        "accepted": [],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250206T112219",
+        "frozen": -0.22536808892585083,
+        "stateless": -0.07192539931360223,
+        "recal_fewshot": -0.034679970971477424,
+        "agentic": 0.028353360009591416,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250206T112712",
+        "frozen": 0.08825430751078699,
+        "stateless": 0.23681103985442725,
+        "recal_fewshot": 0.2683163471451016,
+        "agentic": 0.23681103985442725,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250209T111826",
+        "frozen": -0.29094495218799016,
+        "stateless": -0.2934247822664467,
+        "recal_fewshot": -0.002155291697357144,
+        "agentic": -0.29162987064946994,
+        "accepted": [
+          "channel_memory"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      },
+      {
+        "session": "19250209T112327",
+        "frozen": -0.09336855496640228,
+        "stateless": 0.05635539889444558,
+        "recal_fewshot": -0.0015312146273530614,
+        "agentic": 0.05635539889444558,
+        "accepted": [
+          "alignment/input"
+        ],
+        "pruned": [
+          "alignment/latent"
+        ],
+        "start": "fresh",
+        "credit": []
+      }
+    ],
+    "memory": {
+      "days_seen": 14,
+      "chronically_bad_channels": 8,
+      "agent_beliefs": {
+        "alignment/input": 0.62,
+        "alignment/latent": 0.17,
+        "channel_memory": 0.25
+      },
+      "notes": [
+        "channel_memory: helps this user 25% of the time over 10 tries",
+        "alignment/latent: helps this user 17% of the time over 4 tries",
+        "alignment/input: helps this user 62% of the time over 14 tries",
+        "8 channels chronically unreliable: [14, 24, 31, 90, 92, 114, 149, 152]"
+      ]
+    },
+    "score": {
+      "dev": -0.005296072021216884,
+      "test": -0.0209379538192023,
+      "all": -0.01311701292020959,
+      "worst": -0.29162987064946994,
+      "sessions_beating_frozen": 9
+    }
+  },
+  "baselines": {
+    "frozen": {
+      "dev": -0.21624335558376998,
+      "test": -0.0996975562018381,
+      "all": -0.15797045589280406,
+      "worst": -0.4961469691987392
+    },
+    "stateless": {
+      "dev": -0.017875249553952897,
+      "test": -0.027596486533416797,
+      "all": -0.022735868043684847,
+      "worst": -0.2934247822664467
+    },
+    "recal_fewshot": {
+      "dev": 0.0142971723706776,
+      "test": 0.08662489085817093,
+      "all": 0.050461031614424265,
+      "worst": -0.14686723261042514
+    }
+  }
+}

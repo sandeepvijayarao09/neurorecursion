@@ -28,7 +28,7 @@ def _key():
 
 
 def available():
-    return bool(_key())
+    return bool(_key()) and not os.environ.get("NO_LLM")
 
 
 def _get():
@@ -58,7 +58,14 @@ def ask_json(role, model, system, user, max_tokens=1500, retries=3):
                 extra_body={"chat_template_kwargs": {"enable_thinking": False}},
             )
             out = _extract_json(r.choices[0].message.content)
-            CALLS.append((role, model, round(time.time() - t, 1), out is not None))
+            u = getattr(r, "usage", None)
+            CALLS.append((role, model, round(time.time() - t, 1), out is not None,
+                          {"id": getattr(r, "id", None), "prompt_tokens": getattr(u, "prompt_tokens", 0),
+                           "completion_tokens": getattr(u, "completion_tokens", 0)}))
+            if os.environ.get("LLM_LOG"):
+                with open(os.environ["LLM_LOG"], "a") as fh:
+                    fh.write(json.dumps({"role": role, "model": model, "seconds": CALLS[-1][2], "ok": out is not None,
+                                         **CALLS[-1][4], "reply": out}, default=str) + "\n")
             if out is not None:
                 return out
         except Exception as e:  # 429/503 are transient per Crusoe; back off

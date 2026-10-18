@@ -1,0 +1,52 @@
+{
+  "notes": [
+    "alignment/latent high accept (4) but low reject (2) -> prioritize for trust calibration",
+    "alignment/input moderate reject (4) with negative delta -> increase sampling or adjust threshold",
+    "intent low accept (1) and low reject (1) but high iterate (8) -> review intent logic for stalling",
+    "v1 reverted, edits {'verifier_margin': 0.03, 'max_mask_frac': 0.4} did not help on held-out",
+    "v1 reverted, edits {'dead_ratio': 0.15, 'max_mask_frac': 0.4} did not help on held-out",
+    "channel_health high reject (6) with negative delta -> lower dead_ratio or boost sampling",
+    "alignment/latent high accept (4) positive delta -> prioritize for trust calibration",
+    "intent low accept (1) high iterate (8) -> review intent logic for stalling"
+  ],
+  "agent_stats": {
+    "channel_health": {
+      "accept": 0,
+      "reject": 6,
+      "iterate": 1,
+      "mean_delta": -0.0787
+    },
+    "alignment/input": {
+      "accept": 2,
+      "reject": 4,
+      "iterate": 0,
+      "mean_delta": -0.0389
+    },
+    "alignment/latent": {
+      "accept": 4,
+      "reject": 2,
+      "iterate": 0,
+      "mean_delta": 0.0317
+    },
+    "intent": {
+      "accept": 1,
+      "reject": 1,
+      "iterate": 8,
+      "mean_delta": 0.0019
+    }
+  },
+  "reverted_edits": [
+    {
+      "verifier_margin": 0.03,
+      "max_mask_frac": 0.4
+    },
+    {
+      "dead_ratio": 0.15,
+      "max_mask_frac": 0.4
+    },
+    {
+      "dead_ratio": 0.15,
+      "max_mask_frac": 0.4
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "summary": {
+    "frozen": {
+      "mean_r2": -0.0621863475155915,
+      "ci95": [
+        -0.12081565124962511,
+        -0.007837595505222106
+      ],
+      "worst_day": -0.2032946299750805
+    },
+    "stateless": {
+      "mean_r2": -0.015542169515262579,
+      "ci95": [
+        -0.14782094956787342,
+        0.09723726580813083
+      ],
+      "worst_day": -0.3782943648971115
+    },
+    "memory": {
+      "mean_r2": -0.011764852315762828,
+      "ci95": [
+        -0.1489460618840577,
+        0.08539268495862302
+      ],
+      "worst_day": -0.3782943648971115
+    },
+    "memory_minus_stateless": {
+      "mean": 0.003777317199499743,
+      "ci95": [
+        -0.014060085621495503,
+        0.021411775980825543
+      ],
+      "days_better": 3,
+      "days_worse": 1
+    },
+    "memory_contents": {
+      "days_seen": 7,
+      "chronically_bad_channels": 6,
+      "agent_beliefs": {
+        "alignment/input": 0.89,
+        "alignment/latent": 0.17,
+        "channel_memory": 0.25
+      },
+      "notes": [
+        "channel_memory: helps this user 25% of the time over 6 tries",
+        "alignment/latent: helps this user 17% of the time over 4 tries",
+        "alignment/input: helps this user 89% of the time over 7 tries",
+        "6 channels chronically unreliable: [14, 24, 90, 114, 149, 152]"
+      ]
+    },
+    "llm": {
+      "planner": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      "calls": 7,
+      "ok": 7,
+      "median_s": 0.4
+    }
+  },
+  "per_day": [
+    {
+      "day": "19250126",
+      "frozen": 0.034503590914279014,
+      "stateless": 0.19781823330372464,
+      "memory": 0.15685171432279787,
+      "start": "fresh",
+      "order": [
+        "alignment/input",
+        "alignment/latent",
+        "channel_memory"
+      ],
+      "pruned": [],
+      "accepted": [
+        "alignment/input",
+        "channel_memory"
+      ],
+      "score_fresh": 0.0500658962643899,
+      "score_final": 0.004017406089428506
+    },
+    {
+      "day": "19250127",
+      "frozen": -0.2032946299750805,
+      "stateless": -0.0672525535255789,
+      "memory": -0.0672525535255789,
+      "start": "fresh",
+      "order": [
+        "alignment/input",
+        "channel_memory",
+        "alignment/latent"
+      ],
+      "pruned": [],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.006878978901823553,
+      "score_final": 0.002099225330697542
+    },
+    {
+      "day": "19250129",
+      "frozen": -0.03068772472620483,
+      "stateless": 0.05504104915462592,
+      "memory": 0.06285222409364015,
+      "start": "fresh",
+      "order": [
+        "alignment/input",
+        "channel_memory",
+        "alignment/latent"
+      ],
+      "pruned": [],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.01391415433724181,
+      "score_final": 0.006811481883948168
+    },
+    {
+      "day": "19250202",
+      "frozen": -0.13756580229682275,
+      "stateless": -0.03109922308991851,
+      "memory": 0.016257862552336348,
+      "start": "memory (19250129)",
+      "order": [
+        "alignment/input",
+        "channel_memory",
+        "alignment/latent"
+      ],
+      "pruned": [],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.03371430204327333,
+      "score_final": 0.005180300882875763
+    },
+    {
+      "day": "19250203",
+      "frozen": 0.018859317466118686,
+      "stateless": 0.11355522105738335,
+      "memory": 0.11355522105738335,
+      "start": "fresh",
+      "order": [
+        "alignment/input",
+        "channel_memory"
+      ],
+      "pruned": [
+        "alignment/latent"
+      ],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.006155735326739592,
+      "score_final": 0.0044473487869764895
+    },
+    {
+      "day": "19250206",
+      "frozen": -0.09022506202679599,
+      "stateless": -0.3782943648971115,
+      "memory": -0.3782943648971115,
+      "start": "fresh",
+      "order": [
+        "alignment/input"
+      ],
+      "pruned": [
+        "alignment/latent"
+      ],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.005028040843370728,
+      "score_final": 0.002696347134240761
+    },
+    {
+      "day": "19250209",
+      "frozen": -0.026894121964634192,
+      "stateless": 0.0014364513900369605,
+      "memory": 0.013675930186192842,
+      "start": "fresh",
+      "order": [
+        "alignment/input",
+        "channel_memory"
+      ],
+      "pruned": [
+        "alignment/latent"
+      ],
+      "accepted": [
+        "alignment/input"
+      ],
+      "score_fresh": 0.02969594959059882,
+      "score_final": 0.019587582475696988
+    }
+  ]
+}

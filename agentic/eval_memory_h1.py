@@ -65,7 +65,7 @@ def main(root, out_dir):
     if os.path.exists(dbp):
         os.remove(dbp)
     mem = UserMemory(dbp, "HumanPitt-H1")
-    orch = MemoryOrchestrator(master, verifier, mem, ref_rate, ref_mu, ref_cov, tmpl)
+    orch = MemoryOrchestrator(master, verifier, mem, ref_rate, ref_mu, ref_cov, tmpl, seed=int(os.environ.get("SEED", 0)))
     rows = []
     for day, X, V, M in held_out:
         n = len(X)
@@ -93,6 +93,10 @@ def main(root, out_dir):
     summ["memory_minus_stateless"] = {"mean": float(d.mean()), "ci95": [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))],
                                       "days_better": int((d > 1e-4).sum()), "days_worse": int((d < -1e-4).sum())}
     summ["memory_contents"] = mem.summary(Xi.shape[1])
+    import llm
+    summ["llm"] = {"planner": llm.PLANNER_MODEL if llm.available() else "rules",
+                   "calls": len(llm.CALLS), "ok": sum(1 for c in llm.CALLS if c[3] is True),
+                   "median_s": float(np.median([c[2] for c in llm.CALLS])) if llm.CALLS else None}
     json.dump({"summary": summ, "per_day": rows}, open(os.path.join(out_dir, "memory_eval.json"), "w"), indent=2, default=float)
     print(json.dumps(summ, indent=2, default=float))
 

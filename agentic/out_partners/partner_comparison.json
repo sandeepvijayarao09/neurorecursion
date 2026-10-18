@@ -1,0 +1,72 @@
+[
+  {
+    "planner": "rules",
+    "runs": 1,
+    "mean_r2": -0.014446612834125802,
+    "sd": 0.0,
+    "min_run": -0.014446612834125802,
+    "max_run": -0.014446612834125802,
+    "worst_day_mean": -0.3782943648971115,
+    "vs_stateless": 0.0010955566811367702,
+    "llm_ok_rate": null,
+    "median_latency_s": null,
+    "frozen": -0.0621863475155915,
+    "stateless": -0.015542169515262579
+  },
+  {
+    "planner": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+    "runs": 3,
+    "mean_r2": -0.01716810123099166,
+    "sd": 0.0076413478967943295,
+    "min_run": -0.027974599061449328,
+    "max_run": -0.011764852315762828,
+    "worst_day_mean": -0.3782943648971115,
+    "vs_stateless": -0.0016259317157290888,
+    "llm_ok_rate": 1.0,
+    "median_latency_s": 0.4,
+    "frozen": -0.0621863475155915,
+    "stateless": -0.015542169515262579
+  },
+  {
+    "planner": "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+    "runs": 3,
+    "mean_r2": -0.012658772488550485,
+    "sd": 0.0012641940320352065,
+    "min_run": -0.014446612834125802,
+    "max_run": -0.011764852315762828,
+    "worst_day_mean": -0.3782943648971115,
+    "vs_stateless": 0.0028833970267120855,
+    "llm_ok_rate": 1.0,
+    "median_latency_s": 1.2,
+    "frozen": -0.0621863475155915,
+    "stateless": -0.015542169515262579
+  },
+  {
+    "planner": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "runs": 3,
+    "mean_r2": -0.01023894357564826,
+    "sd": 0.0041994759489661125,
+    "min_run": -0.014446612834125802,
+    "max_run": -0.004505365577056148,
+    "worst_day_mean": -0.3782943648971115,
+    "vs_stateless": 0.0053032259396143125,
+    "llm_ok_rate": 1.0,
+    "median_latency_s": 0.7,
+    "frozen": -0.0621863475155915,
+    "stateless": -0.015542169515262579
+  },
+  {
+    "planner": "nvidia/NVIDIA-Nemotron-3.5-Super-VL",
+    "runs": 3,
+    "mean_r2": -0.012393836965725288,
+    "sd": 0.0008895186225014019,
+    "min_run": -0.013651806265650202,
+    "max_run": -0.011764852315762828,
+    "worst_day_mean": -0.31996111992310117,
+    "vs_stateless": 0.0031483325495372887,
+    "llm_ok_rate": 1.0,
+    "median_latency_s": 0.5,
+    "frozen": -0.0621863475155915,
+    "stateless": -0.015542169515262579
+  }
+]
