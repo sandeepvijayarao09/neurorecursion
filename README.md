@@ -1,5 +1,13 @@
 # NeuroRecursion
 
+## In 30 seconds
+- **What it is:** AI agents that keep a brain-computer interface (brain signals in, cursor or arm movement out) usable without retraining its decoder.
+- **Why it matters:** Decoders drift as signals change, so today they need regular recalibration with labelled data from the user.
+- **Key result:** On 7 real held-out days of human data (FALCON H1), the agents beat the frozen decoder on 6 of 7 days with no labels (mean R², a fit score, higher is better: −0.016 vs −0.062). Recalibration with labels still does clearly better (+0.106).
+- **What I did:** Built the agents, verifier, memory layer and evals at the Crusoe x Cerebral Valley Recursive Agents Hackathon (Oct 17, 2026). Research prototype, not a medical device.
+- **Built with:** Python, PyTorch, NumPy/SciPy, SQLite, NVIDIA Nemotron on Crusoe.
+- **Try it:** Open `viz/evals.html` in a browser.
+
 Recursive agents that keep a brain-computer-interface decoder usable **without daily recalibration**.
 
 The decoder is trained once and frozen. A team of agents adapts the signal around it every day:
