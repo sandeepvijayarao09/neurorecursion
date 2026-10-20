@@ -1,4 +1,4 @@
-# NVIDIA Nemotron evals on Crusoe Managed Inference
+# Putting an LLM in the loop: Nemotron planner and reviewer
 
 Run on Oct 17 2026. Every LLM decision came from a live Crusoe call. The request ID, token counts and reply of each call are logged in `out_nvidia/**/crusoe_calls.jsonl`.
 

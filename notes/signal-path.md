@@ -1,6 +1,6 @@
-# Neuralink: brain signal → output workflow
+# Reading notes: how a Neuralink implant turns brain signals into outputs
 
-Compiled 2026-10-17 from public sources (see `pipeline_data.json` for every fact tagged with its source and confidence).
+Compiled 2026-10-17 from public sources (see `signal-path-sources.json` for every fact tagged with its source and confidence).
 
 ```
  Motor cortex        N1 implant (in skull)                        External device (Neuralink App)          Output

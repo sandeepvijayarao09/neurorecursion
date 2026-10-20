@@ -1,4 +1,4 @@
-# Agentic adaptation layer: framework outline (v0)
+# v0: the first version of the adaptation layer
 
 Goal: train the decoder **once**, then let agents adapt *around* the frozen model each day, so users don't recalibrate and the model isn't retrained.
 
@@ -25,7 +25,6 @@ Goal: train the decoder **once**, then let agents adapt *around* the frozen mode
 
 Run:
 ```bash
-cd neuralink_research
 .venv/bin/python agentic/run_agentic.py data/mc_maze/mc_maze_medium_train.nwb agentic/out
 ```
 It takes about 1 min.

@@ -1,8 +1,8 @@
 """Crusoe Managed Inference client (OpenAI-compatible) with a deterministic fallback.
 
 Set CRUSOE_API_KEY to use Nemotron on Crusoe. Without it, callers get `None`
-and fall back to their rule-based policy, so the demo always runs.
-Model IDs are from Crusoe's hackathon skill file; confirm with GET /v1/models.
+and fall back to their rule-based policy, so the pipeline always runs.
+Confirm model IDs with GET /v1/models.
 """
 import json
 import os

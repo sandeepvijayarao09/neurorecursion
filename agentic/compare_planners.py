@@ -1,5 +1,5 @@
 """Compare planner models on Crusoe (and the rule baseline) on FALCON H1, several runs each.
-Usage: python partner_evals.py <falcon_h1_dir> <out_dir> [runs]"""
+Usage: python compare_planners.py <falcon_h1_dir> <out_dir> [runs]"""
 import json
 import os
 import subprocess
@@ -48,7 +48,7 @@ def main(root, out, runs=3):
                      "llm_ok_rate": float(np.mean([r["llm"]["ok"] / max(1, r["llm"]["calls"]) for r in ok])) if m != "rules" else None,
                      "median_latency_s": float(np.median([r["llm"]["median_s"] or 0 for r in ok])) if m != "rules" else None,
                      "frozen": ok[0]["frozen"]["mean_r2"], "stateless": ok[0]["stateless"]["mean_r2"]})
-    json.dump(rows, open(os.path.join(out, "partner_comparison.json"), "w"), indent=2)
+    json.dump(rows, open(os.path.join(out, "planner_comparison.json"), "w"), indent=2)
     for r in rows:
         print(json.dumps(r))
 

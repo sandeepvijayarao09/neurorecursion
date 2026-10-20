@@ -110,8 +110,7 @@ ul.cav{margin:0;padding-left:18px;color:var(--text-2)}ul.cav li{margin:4px 0}
       <li><b>LLM agents.</b> <span id="llmNote"></span> Section C was run before the LLM layer existed and uses the rule-based orchestrator.</li>
     </ul>
     <p class="ct" style="margin-top:18px">Reproduce</p>
-<pre>cd neuralink_research
-.venv/bin/python -I demo/stage_a_signal_to_spikes.py data/raw/data demo/out
+<pre>.venv/bin/python -I demo/stage_a_signal_to_spikes.py data/raw/data demo/out
 .venv/bin/python demo/stage_b_crossval.py data/mc_maze/mc_maze_medium_train.nwb demo/out
 .venv/bin/python agentic/run_agentic.py data/mc_maze/mc_maze_medium_train.nwb agentic/out
 .venv/bin/python agentic/recursive.py data/mc_maze/mc_maze_medium_train.nwb agentic/out_recursive 2

@@ -1,11 +1,11 @@
-# Partner model evals: Nemotron planners on Crusoe
+# Does the choice of LLM planner matter? Four Nemotron models compared
 
 **Setup:**
 - **Task:** the memory-driven agent team (`eval_memory_h1.py`) on FALCON H1, 7 real held-out days in date order.
 - **What varies:** only the planner model.
 - **Runs:** 3 per model, with different seeds and temperature 0.6. The rule-based baseline is deterministic, so it ran once.
 - **Fixed for every run:** frozen decoder R² −0.062, stateless agents −0.016.
-- **Raw output:** `out_partners/partner_comparison.json`.
+- **Raw output:** `out_planners/planner_comparison.json`.
 
 | Planner | Runs | Mean R² (± SD) | Range across runs | vs stateless | Worst day (mean) | Calls OK | Median latency |
 |---|---|---|---|---|---|---|---|
@@ -26,5 +26,5 @@
 
 ## Reproduce
 ```bash
-.venv/bin/python agentic/partner_evals.py data/falcon_h1 agentic/out_partners 3
+.venv/bin/python agentic/compare_planners.py data/falcon_h1 agentic/out_planners 3
 ```

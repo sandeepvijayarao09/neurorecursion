@@ -1,13 +1,13 @@
 """Recursive agents for a self-maintaining brain-computer interface decoder.
 
-Hackathon tracks:
-  * Done Means Done - a Nemotron planner turns the one-line goal ("keep the cursor
+Three loops:
+  * Definition of done - a Nemotron planner turns the one-line goal ("keep the cursor
     usable today without recalibration") into runnable checks, tool agents work
     until the checks pass, and the planner decides continue / re-plan / stop / ping a human.
-  * Version N+1     - after each version's runs a Nemotron reviewer reads the audit
+  * Version N+1        - after each version's runs a Nemotron reviewer reads the audit
     log and rewrites the playbook (thresholds, agent order, checks). The change is
     kept only if it beats the current version on held-out drift scenarios.
-  * Shared Brain    - every agent reads memory.json before it works and the reviewer
+  * Shared memory      - every agent reads memory.json before it works and the reviewer
     updates it afterwards.
 
 The decoder itself (pretrained spike encoder + linear head) is frozen after day 0.

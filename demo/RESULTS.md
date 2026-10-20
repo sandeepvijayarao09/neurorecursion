@@ -62,7 +62,6 @@ Figures: `out/B1_pretraining_calibration.png`, `out/B2_velocity.png`, `out/B3_cu
 
 ## Reproduce
 ```bash
-cd neuralink_research
 .venv/bin/python -I demo/stage_a_signal_to_spikes.py data/raw/data demo/out
 .venv/bin/python demo/stage_b_spikes_to_cursor.py data/mc_maze/mc_maze_medium_train.nwb demo/out
 .venv/bin/python demo/stage_b_crossval.py data/mc_maze/mc_maze_medium_train.nwb demo/out
