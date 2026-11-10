@@ -15,14 +15,15 @@ Decoder: causally smoothed rates (τ = 300 ms, 120 ms lag) with a ridge head. He
 | **Agentic (with verifier)** | **none** | **−0.016 (−0.158, 0.092)** | **6 / 7** |
 | Agentic, verifier off (ablation) | none | −1.277 (−1.745, −0.955) | 0 / 7 |
 | Only channel-health agent | none | −0.013 | — |
-| Only input-gain agent | none | +0.001 | — |
+| Only input-gain agent | none | +0.001 (−0.140, 0.110) | — |
+| Frozen raw-spike ridge (no adaptation) | none | +0.020 (−0.021, 0.060) | — |
 | Only latent-alignment agent | none | −0.062 (never accepted) | — |
 | Few-shot recalibration (today's method) | ~3.5 min of labelled data per day | **+0.106 (0.049, 0.157)** | 7 / 7 |
 
-Agentic minus frozen: +0.047 mean R² (95% CI −0.073 to +0.125). The median agentic system recovers 55% of the gain that recalibration gets, with zero labels.
+Agentic minus frozen (paired): +0.047 mean R² (95% CI −0.073 to +0.125). The CI includes zero, so the gain is **not statistically significant**. Two simpler baselines beat the full agent system (−0.016): a frozen ridge decoder on raw spikes (+0.020) and the input-gain agent alone (+0.001). Source for every number in this table: `out_falcon/falcon_h1_eval_smooth.json` (`summary`). The median agentic system recovers 55% of the gain that recalibration gets, with zero labels.
 
 **Honest read:**
-- **Agents beat the frozen decoder on 6 of 7 real days,** without any labels.
+- **Agents beat the frozen decoder on 6 of 7 real days,** without any labels, but the paired difference (+0.047, 95% CI −0.073 to +0.125) is not significant, and a frozen raw-spike ridge (+0.020) and the input-gain agent alone (+0.001) both score higher than the full agent system.
 - **On average they're not yet a replacement for recalibration.** Recalibration is still about 0.12 R² better, and the agentic CI overlaps zero gain.
 - **The verifier is essential.** With it off, the same agents wreck the decoder (R² −1.28).
 - **One failure day (+17 d, R² −0.38):** the verifier's label-free score (match of output distribution to day 0) accepted a harmful input-gain change. The next fix is a stricter verifier or a rollback rule.
@@ -46,7 +47,7 @@ Results are in `out_recursive/scoreboard.json`.
 | Labels per day | ~3.5 min few-shot (here); Neuralink reports ~55 min/week | 0 |
 | Decoder changes | head refit daily | none (frozen) |
 | Real-data R² (H1 mean) | **+0.106** | −0.016 |
-| Beats frozen on | 7 / 7 days | 6 / 7 days |
+| Beats frozen on | 7 / 7 days | 6 / 7 days (paired gain +0.047, 95% CI −0.073 to +0.125, not significant) |
 | Safety mechanism | human | verifier + gate (without it: −1.28) |
 | Audit trail | none | every proposal logged |
 

@@ -23,16 +23,18 @@ Frozen decoder on the same held-out scenarios: 0.035.
 ## 2. Memory-driven agents on real cross-day human data (FALCON H1)
 - **Planner:** Nemotron 3 Super 120B orders the agents each day from the user's memory.
 - **Data:** 7 held-out days, processed in date order.
-- **Runs:** 3 seeds.
+- **Runs:** 3 seeds, in `out_nvidia/falcon_h1/seed*/` (each `memory_eval.json` and call log records the planner as `NVIDIA-Nemotron-3-Super-120B-A12B`).
 
-| | Frozen | Stateless agents | Memory + Nemotron (3 runs) |
-|---|---|---|---|
-| Mean R² | −0.062 | −0.016 | **−0.013 ± 0.001** (−0.014, −0.012, −0.012) |
-| vs stateless | | | +0.001 to +0.004 |
-| Worst day | −0.203 | −0.378 | −0.378 in all 3 runs |
+| | Frozen | Stateless agents | Memory + Nemotron 3 Super (3 runs, Oct 17) | Memory + Nemotron 3 Super (3-run rerun, `out_planners/`) |
+|---|---|---|---|---|
+| Mean R² | −0.062 | −0.016 | −0.013 ± 0.001 (−0.014, −0.012, −0.012) | **−0.017 ± 0.008** (−0.028, −0.012, −0.012) |
+| vs stateless | | | +0.001 to +0.004 | −0.002 (mean) |
+| Worst day | −0.203 | −0.378 | −0.378 in all 3 runs | −0.378 in all 3 runs |
+
+**Attribution note:** in `out_planners/planner_comparison.json`, the −0.013 ± 0.001 (−0.014, −0.012, −0.012) figures are the **Nemotron 3.5 Lightning** row. Nemotron 3 Super's row there is −0.017 ± 0.008. The Oct 17 Super runs above happen to land on the same three values as Lightning, because many runs end in identical agent schedules. Use the `planner_comparison.json` figures when comparing planners.
 
 **Findings:**
-- **Consistent across runs:** all 3 beat the frozen decoder by about 0.05 R², with small spread between runs.
+- **All runs beat the frozen decoder,** by about 0.05 R², but Super's spread between runs is larger than the first 3 runs suggested (SD 0.008 in the rerun).
 - **No real gain over stateless agents:** the edge is +0.001 to +0.004.
 - **The planner didn't prevent the Feb 6 failure:** it kept scheduling the input-gain agent. Sometimes it returned an empty plan, and the system then fell back to the memory-based schedule.
 

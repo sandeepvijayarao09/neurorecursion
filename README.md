@@ -1,5 +1,14 @@
 # NeuroRecursion
 
+## In 30 seconds
+
+- **What it is:** an experiment in keeping a brain-computer interface (BCI) decoder usable from day to day without recalibration. The decoder is trained once and frozen; a small team of label-free agents adapts the signal around it each day.
+- **Why it matters:** decoders degrade daily as electrodes drift, and today's fix is regular recalibration with labelled data from the user.
+- **Key result (honest):** on FALCON H1 (7 held-out days of real human data) the agents beat the frozen decoder on 6 of 7 days, but the paired gain, +0.047 R² (95% CI −0.073 to +0.125), is **not statistically significant**. Two simpler baselines do better than the full agent system (−0.016): a frozen raw-spike ridge (+0.020) and the input-gain agent alone (+0.001). On 14 sessions the agents close about **45%** of the frozen-to-recalibration gap on unseen test sessions, and labelled recalibration still leads. An LLM planner adds nothing measurable.
+- **What I did:** built the spike pipeline, a pretrained spike encoder, the adaptation agents, a label-free verifier, a per-user memory and a dev/test evaluation protocol, and kept the failed runs and corrections in the repo.
+- **Built with:** Python, NumPy, SciPy, PyTorch, h5py and Matplotlib; optional NVIDIA Nemotron planners via Crusoe Managed Inference; public DANDI datasets (FALCON H1, MC_Maze).
+- **Try it:** see [Reproduce](#reproduce). `NO_LLM=1 .venv/bin/python agentic/eval_14_sessions.py data/falcon_h1 agentic/out_14sessions` runs without an API key.
+
 **Can a brain-computer interface decoder keep working from day to day without the user recalibrating it?**
 
 A BCI decoder turns spikes from motor cortex into cursor or arm movement. It degrades every day: electrodes die, channels get noisy, and neural activity drifts. Today the usual fix is regular recalibration with labelled data from the user, about 55 minutes a week by Neuralink's public account (see [`notes/signal-path.md`](notes/signal-path.md)).
@@ -12,9 +21,9 @@ Research prototype, not a medical device.
 
 | Question | Answer so far |
 |---|---|
-| Can label-free agents beat a frozen decoder on real drift? | **Yes, mostly.** On FALCON H1 (7 held-out days of human intracortical data) they beat it on **6 of 7 days**: mean velocity R² **−0.016 vs −0.062**. |
+| Can label-free agents beat a frozen decoder on real drift? | **On most days, but not significantly.** On FALCON H1 (7 held-out days of human intracortical data) they beat it on **6 of 7 days**: mean velocity R² **−0.016 vs −0.062**. The paired difference is **+0.047 (95% CI −0.073 to +0.125), not significant**. Simpler baselines beat the full agent system: a frozen raw-spike ridge decoder scores **+0.020** and the input-gain agent alone **+0.001** (all from `agentic/out_falcon/falcon_h1_eval_smooth.json`). |
 | Do they replace recalibration? | **Not yet.** Few-shot recalibration with labels still leads (**+0.106**). |
-| Does it hold on sessions I never tuned on? | **Partly.** With 14 sessions split into dev (1–7) and test (8–14), test R² is **−0.015 vs −0.100** for the frozen decoder and **+0.087** for recalibration. That closes about **77%** of the gap with zero labels. |
+| Does it hold on sessions I never tuned on? | **Partly.** With 14 sessions split into dev (1–7) and test (8–14), test R² is **−0.015 vs −0.100** for the frozen decoder and **+0.087** for recalibration. That closes about **45%** of the gap with zero labels: (−0.015 − (−0.100)) / (0.087 − (−0.100)). |
 | What matters most? | **The verifier.** With it switched off, the same agents wreck the decoder (R² **−1.277**). |
 | Does an LLM planner help? | **Not yet.** Four Nemotron planners all land within noise of a rule-based planner. The result comes from the agents, the verifier and the memory, not from the LLM. |
 | Does self-supervised pretraining help when labels are scarce? | **For R², yes:** 0.27 vs 0.18 with about 11 s of labels on MC_Maze. **For target selection, no:** accuracy dropped from 53% to 41%. |
@@ -47,7 +56,7 @@ Absolute R² values are low for every method. They are for comparing methods wit
    I added a per-user SQLite memory: an agent schedule chosen by Thompson sampling, a warm start from the last verified state, and rollback. I made every design decision on sessions 1–7 only. The kept change came from a specific failure: in session 4, a warm start stacked a second gain change on top and drove R² to −0.444. Now a remembered state is trusted only if it wins on *both halves* of today's data. That cut the worst session to −0.292.
 
 6. **Does an LLM planner add anything?** ([`agentic/LLM_IN_THE_LOOP.md`](agentic/LLM_IN_THE_LOOP.md), [`agentic/PLANNER_COMPARISON.md`](agentic/PLANNER_COMPARISON.md))
-   I tried a Nemotron planner that orders the agents each day, plus a reviewer that rewrites the playbook between versions. A held-out gate keeps a rewrite only if it improves R². The gate worked: it blocked every edit that didn't help. But no planner beat rules, and one early +0.013 result didn't reproduce over 3 more runs. I've corrected it in the planner comparison.
+   I tried a Nemotron planner that orders the agents each day, plus a reviewer that rewrites the playbook between versions. A held-out gate keeps a rewrite only if it improves R². The gate worked: it blocked every edit that didn't help. But no planner beat rules, and one early +0.013 result didn't reproduce over 3 more runs. I've corrected it in the planner comparison. That superseded +0.013 run is kept in `agentic/out_memory_nemotron/memory_eval.json`; it did not reproduce.
 
 ## What didn't work, and what I think it means
 

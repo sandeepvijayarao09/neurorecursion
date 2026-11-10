@@ -39,7 +39,7 @@ The change in round 2 came from a specific failure. In session 4, v1 warm-starte
   - but it's slightly behind v1 on test (−0.011)
   - the dev-selected changes mostly made the system safer, not more accurate, on new data
 - **Nemotron doesn't help on top of v3 yet:** 42 calls, all valid. Test R² was −0.020 against −0.015 with the rule planner, within noise.
-- **Recalibration still leads on test** (+0.087). The agents close about 77% of the frozen-to-recalibration gap with zero labels: (−0.015 − (−0.100)) / (0.087 − (−0.100)).
+- **Recalibration still leads on test** (+0.087). The agents close about 45% of the frozen-to-recalibration gap with zero labels: (−0.015 − (−0.100)) / (0.087 − (−0.100)) = 0.085 / 0.187. (An earlier version of this page said 77%; that was an arithmetic error.)
 - **Still open:** delayed credit didn't help with sessions this short (about 15 s of adaptation data each). It may need longer sessions, or a stronger delayed signal.
 
 ## Files (all new; earlier evals untouched)
@@ -49,6 +49,7 @@ The change in round 2 came from a specific failure. In session 4, v1 warm-starte
   - `eval_14_round2*.json`: round 2 and seed tie-break
   - `eval_14_final_nemotron_seed*.json`: final Nemotron runs
   - `crusoe_calls_seed*.jsonl`: Crusoe call logs
+- **Superseded:** `out_memory_nemotron/memory_eval.json` holds the earlier single 7-day Nemotron run (+0.013 R²). It did not reproduce over 3 more runs; see `PLANNER_COMPARISON.md`.
 
 ```bash
 NO_LLM=1 .venv/bin/python agentic/eval_14_sessions.py data/falcon_h1 agentic/out_14sessions

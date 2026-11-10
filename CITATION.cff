@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "NeuroRecursion: label-free agents that adapt around a frozen BCI decoder"
+authors:
+  - family-names: "Vijayarao"
+    given-names: "Sai Sandeep Kumar"
+repository-code: "https://github.com/sandeepvijayarao09/neurorecursion"
+url: "https://github.com/sandeepvijayarao09/neurorecursion"
+version: "1.0.0"
+date-released: "2026-11-09"
+license: MIT
