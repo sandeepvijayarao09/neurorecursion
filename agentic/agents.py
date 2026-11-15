@@ -65,10 +65,13 @@ class FrozenMaster:
         self._cache = {}
 
     def latent(self, X, state):
-        key = (id(X), state.ch_weight.tobytes())
-        if key not in self._cache:
-            self._cache = {key: self.embed_fn(X * state.ch_weight[None, :])}   # keep cache small
-        return self._cache[key]
+        # Cache one embedding. Keep a reference to X so its id() cannot be reused by a new array
+        # (an id-only key returned stale embeddings for equal-length arrays).
+        w = state.ch_weight.tobytes()
+        c = self._cache
+        if not c or c["X"] is not X or c["w"] != w:
+            self._cache = {"X": X, "w": w, "Z": self.embed_fn(X * state.ch_weight[None, :])}
+        return self._cache["Z"]
 
     def decode(self, X, state):
         Z = self.latent(X, state)

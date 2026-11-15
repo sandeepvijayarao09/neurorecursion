@@ -1,0 +1,52 @@
+{
+  "notes": [
+    "alignment/latent agents show positive mean_delta (0.0317) but low reject count; consider promoting before alignment/input.",
+    "alignment/input has higher reject rate (4) than accept (2); increasing verifier_margin may reduce rejections.",
+    "intent agent has balanced accept/reject (1/1) but high iterate count (8); review if additional loops improve convergence.",
+    "v1 reverted, edits {'dead_ratio': 0.15, 'verifier_margin': 0.02} did not help on held-out",
+    "v1 reverted, edits {'verifier_margin': 0.02, 'max_mask_frac': 0.5} did not help on held-out",
+    "alignment/latent agents show positive mean_delta (0.029) but low reject count; consider promoting before alignment/input.",
+    "intent agent has balanced accept/reject (1/1) but high iterate count (6); review if additional loops improve convergence.",
+    "v1 reverted, edits {'dead_ratio': 0.1, 'noisy_ratio': 2.5} did not help on held-out"
+  ],
+  "agent_stats": {
+    "channel_health": {
+      "accept": 0,
+      "reject": 6,
+      "iterate": 1,
+      "mean_delta": -0.0679
+    },
+    "alignment/latent": {
+      "accept": 4,
+      "reject": 2,
+      "iterate": 0,
+      "mean_delta": 0.029
+    },
+    "alignment/input": {
+      "accept": 1,
+      "reject": 4,
+      "iterate": 2,
+      "mean_delta": -0.0194
+    },
+    "intent": {
+      "accept": 2,
+      "reject": 1,
+      "iterate": 6,
+      "mean_delta": 0.0033
+    }
+  },
+  "reverted_edits": [
+    {
+      "dead_ratio": 0.15,
+      "verifier_margin": 0.02
+    },
+    {
+      "verifier_margin": 0.02,
+      "max_mask_frac": 0.5
+    },
+    {
+      "dead_ratio": 0.1,
+      "noisy_ratio": 2.5
+    }
+  ]
+}

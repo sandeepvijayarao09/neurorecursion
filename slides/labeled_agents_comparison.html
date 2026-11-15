@@ -1,0 +1,110 @@
+<title>Labels for Agents</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: headline, chart card with series toggles and view switch, result table */
+:root{
+  --bg:#f3f5f8; --card:#ffffff; --ink:#111a26; --muted:#5d6b7c; --grid:#e3e8ee; --soft:#eef2f6;
+  --current:#d1493f; --hybrid:#5b52c9; --labmem:#1f9a6e; --free:#2c8fb8; --frozen:#9aa5b1;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121315; --card:#1c1d20; --ink:#f1f1ef; --muted:#a6a8ad; --grid:#2e3035; --soft:#25272b;
+  --current:#e0564b; --hybrid:#9c95ff; --labmem:#45b088; --free:#5bb4dc; --frozen:#b9bbbf; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121315; --card:#1c1d20; --ink:#f1f1ef; --muted:#a6a8ad; --grid:#2e3035; --soft:#25272b;
+  --current:#e0564b; --hybrid:#9c95ff; --labmem:#45b088; --free:#5bb4dc; --frozen:#b9bbbf; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px}
+.wrap{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance}
+.lead{font-size:clamp(15px,1.6vw,18px);color:var(--muted);max-width:70ch;margin:0;line-height:1.55}
+.card{background:var(--card);border:1px solid var(--grid);border-radius:14px;padding:clamp(14px,2.4vw,26px);display:flex;flex-direction:column;gap:14px}
+.bar{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.keys{display:flex;gap:8px;flex-wrap:wrap}
+.key{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--sans);color:var(--ink);background:var(--soft);border:1px solid var(--grid);border-radius:999px;padding:6px 12px;cursor:pointer}
+.key[aria-pressed="false"]{opacity:.45}
+.key:focus-visible,.toggle button:focus-visible{outline:2px solid var(--hybrid);outline-offset:2px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.dash{background:transparent!important;border-top:3px dashed;height:0;width:16px;border-radius:0}
+.toggle{display:inline-flex;background:var(--soft);border-radius:8px;padding:3px;gap:3px}
+.toggle button{font:500 13px var(--sans);color:var(--muted);background:transparent;border:0;border-radius:6px;padding:7px 12px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--grid)}
+.chart{position:relative;height:clamp(300px,44vw,440px)}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0;line-height:1.6}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums;min-width:620px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--grid);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td .sw{margin-right:8px;vertical-align:-1px}
+.pill{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--muted);white-space:nowrap}
+</style>
+
+<div class="wrap">
+  <h1>With labels, agents on top of recalibration tie it. Agents alone still trail.</h1>
+  <p class="lead">14 real sessions from a person with a brain implant (FALCON H1). Every labelled method gets the same budget: about 14 seconds of calibration labels at the start of each session. Sessions 1–7 were used to tune; 8–14 are unseen.</p>
+
+  <div class="card">
+    <div class="bar">
+      <div class="keys" id="keys" role="group" aria-label="Show or hide systems"></div>
+      <div class="toggle" role="group" aria-label="Chart view">
+        <button id="vAvg" aria-pressed="true">Running average</button>
+        <button id="vRaw" aria-pressed="false">Each session</button>
+      </div>
+    </div>
+    <div class="chart"><canvas id="c" role="img" aria-label="Velocity R² across 14 sessions for five systems"></canvas></div>
+    <p class="note" id="axisNote"></p>
+  </div>
+
+  <div class="card">
+    <div class="tablewrap"><table>
+      <thead><tr><th>System</th><th>Labels</th><th>Tuning (1–7)</th><th>Unseen (8–14)</th><th>All 14</th><th>Worst session</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+    <p class="note">Mean velocity R² (1 = perfect, 0 = no better than the average). Hybrid vs current system: +0.003, 95% CI −0.005 to +0.014, a tie. Source: agentic/EVALS_LABELED_AGENTS.md</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+  var labels=['Jan 26 a','Jan 26 b','Jan 27 a','Jan 27 b','Jan 29 a','Jan 29 b','Feb 2 a','Feb 2 b','Feb 3 a','Feb 3 b','Feb 6 a','Feb 6 b','Feb 9 a','Feb 9 b'];
+  var S=[
+    {id:'current',name:'Current system',lab:'yes',tok:'--current',w:3,dash:null,d:[0.087,0.173,-0.147,-0.014,0.165,-0.093,-0.072,0.071,0.14,0.165,-0.035,0.268,-0.002,-0.002],s:[0.014,0.087,0.050,-0.147]},
+    {id:'hybrid',name:'Hybrid: recalibration + agents',lab:'yes',tok:'--hybrid',w:3,dash:[7,5],d:[0.087,0.173,-0.147,-0.014,0.165,-0.093,-0.072,0.071,0.117,0.165,-0.035,0.268,-0.002,0.066],s:[0.014,0.093,0.054,-0.147]},
+    {id:'labmem',name:'Label agents + memory',lab:'yes',tok:'--labmem',w:3,dash:null,d:[-0.053,0.178,-0.021,-0.107,0.139,0.018,-0.258,-0.033,0.011,0.056,-0.225,0.223,-0.065,0.044],s:[-0.015,0.002,-0.007,-0.258]},
+    {id:'free',name:'Label-free agents',lab:'no',tok:'--free',w:2,dash:null,d:[0.068,0.145,-0.102,-0.107,0.143,-0.137,-0.013,-0.108,0.004,-0.058,0.028,0.237,-0.291,0.056],s:[-0.001,-0.019,-0.010,-0.291]},
+    {id:'frozen',name:'Frozen, no help',lab:'no',tok:'--frozen',w:2,dash:[4,4],d:[-0.121,0.008,-0.496,-0.107,-0.045,-0.265,-0.487,-0.122,0.004,-0.058,-0.225,0.088,-0.291,-0.093],s:[-0.216,-0.100,-0.158,-0.496]}];
+  var on={current:true,hybrid:true,labmem:true,free:true,frozen:true},mode='avg';
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function f(v){return (v>0?'+':'')+v.toFixed(3)}
+  function run(a){var s=0;return a.map(function(v,i){s+=v;return +(s/(i+1)).toFixed(3)})}
+  var K=document.getElementById('keys'),tb=document.getElementById('tb');
+  S.forEach(function(x){
+    var sw='<i class="sw'+(x.dash?' dash':'')+'" style="'+(x.dash?'border-color:var('+x.tok+')':'background:var('+x.tok+')')+'"></i>';
+    K.insertAdjacentHTML('beforeend','<button class="key" aria-pressed="true" data-id="'+x.id+'">'+sw+x.name+'</button>');
+    tb.insertAdjacentHTML('beforeend','<tr><td>'+sw+x.name+'</td><td><span class="pill">'+(x.lab==='yes'?'~14 s per session':'none')+'</span></td><td>'+f(x.s[0])+'</td><td><b>'+f(x.s[1])+'</b></td><td>'+f(x.s[2])+'</td><td>'+f(x.s[3])+'</td></tr>')});
+  var note=document.getElementById('axisNote');
+  if(!window.Chart){note.textContent='Chart library did not load; numbers are in the table below.';return}
+  Chart.defaults.font.family=css('--sans');Chart.defaults.color=css('--muted');
+  var chart=new Chart(document.getElementById('c'),{type:'line',data:{labels:labels,datasets:[]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(t){return ' '+t.dataset.label+': '+f(t.parsed.y)}}}},
+      scales:{x:{grid:{color:css('--grid')},ticks:{maxRotation:0,autoSkip:true}},
+        y:{grid:{color:function(c){return c.tick.value===0?css('--muted'):css('--grid')}},title:{display:true,text:'velocity R²'},ticks:{callback:function(v){return (v>0?'+':'')+v.toFixed(2)}}}}}});
+  function draw(){
+    chart.data.datasets=S.filter(function(x){return on[x.id]}).map(function(x){var c=css(x.tok);
+      return {label:x.name,data:mode==='avg'?run(x.d):x.d,borderColor:c,backgroundColor:c,borderWidth:x.w,borderDash:x.dash||[],tension:.35,pointRadius:mode==='avg'?3:4}});
+    chart.options.scales.x.grid.color=css('--grid');
+    chart.options.scales.y.suggestedMin=mode==='avg'?-0.25:-0.5;chart.options.scales.y.suggestedMax=mode==='avg'?0.15:0.3;chart.update();
+    document.getElementById('vAvg').setAttribute('aria-pressed',mode==='avg');document.getElementById('vRaw').setAttribute('aria-pressed',mode!=='avg');
+    note.textContent=mode==='avg'?'Running average of velocity R² up to each session. The hybrid line sits on the current system for most sessions; it differs on Feb 3 a and Feb 9 b.':'Velocity R² in each session. Sessions are short (~48 s scored), so single values are noisy.'}
+  K.onclick=function(e){var b=e.target.closest('.key');if(!b)return;var id=b.dataset.id;on[id]=!on[id];b.setAttribute('aria-pressed',on[id]);draw()};
+  document.getElementById('vAvg').onclick=function(){mode='avg';draw()};document.getElementById('vRaw').onclick=function(){mode='raw';draw()};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);draw();
+})();
+</script>

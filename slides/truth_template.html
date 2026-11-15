@@ -1,0 +1,120 @@
+<title>Truth vs Agents vs Current</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: headline + summary tiles, then a session/DoF picker driving one trace chart, then the per-session table */
+:root{
+  --bg:#f3f5f8; --card:#ffffff; --ink:#111a26; --muted:#5d6b7c; --grid:#e3e8ee; --soft:#eef2f6;
+  --truth:#111a26; --agent:#1f9a6e; --current:#d1493f;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121315; --card:#1c1d20; --ink:#f1f1ef; --muted:#a6a8ad; --grid:#2e3035; --soft:#25272b;
+  --truth:#f1f1ef; --agent:#45b088; --current:#e0564b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121315; --card:#1c1d20; --ink:#f1f1ef; --muted:#a6a8ad; --grid:#2e3035; --soft:#25272b;
+  --truth:#f1f1ef; --agent:#45b088; --current:#e0564b; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance}
+.lead{font-size:clamp(15px,1.6vw,18px);color:var(--muted);max-width:70ch;margin:0;line-height:1.55}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tile{background:var(--card);border:1px solid var(--grid);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .name{font-size:14px;font-weight:500;display:flex;align-items:center;gap:8px}
+.tile .row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tile .row b{color:var(--ink);font-weight:600}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.card{background:var(--card);border:1px solid var(--grid);border-radius:14px;padding:clamp(14px,2.4vw,24px);display:flex;flex-direction:column;gap:14px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+select{font:14px var(--sans);color:var(--ink);background:var(--soft);border:1px solid var(--grid);border-radius:8px;padding:7px 10px}
+select:focus-visible{outline:2px solid var(--agent);outline-offset:1px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-left:auto}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.chart{position:relative;height:clamp(280px,40vw,400px)}
+.stats{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums;min-width:640px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--grid);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tr.sel td{background:var(--soft)}
+tbody tr{cursor:pointer}
+.win{color:var(--agent);font-weight:600}.lose{color:var(--current);font-weight:600}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0;line-height:1.6}
+@media (max-width:700px){.tiles{grid-template-columns:1fr}.legend{margin-left:0}}
+</style>
+
+<div class="wrap">
+  <h1>Truth vs agent system vs current system</h1>
+  <p class="lead">Recorded arm velocity from a person with a brain implant (FALCON H1, 14 held-out sessions), against what each system decodes. The agent system uses no labels on new sessions. The current system refits its decoder every session from calibration labels.</p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="card">
+    <div class="controls">
+      <label for="sess">Session</label><select id="sess"></select>
+      <label for="dof">Movement</label><select id="dof"></select>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw" style="background:var(--truth)"></i>Truth</span>
+        <span><i class="sw" style="background:var(--agent)"></i>Agent system</span>
+        <span><i class="sw" style="background:var(--current)"></i>Current system</span>
+      </div>
+    </div>
+    <div class="chart"><canvas id="c" role="img" aria-label="True and decoded velocity over time for the selected session and movement"></canvas></div>
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <div class="card">
+    <div class="tablewrap"><table>
+      <thead><tr><th>Session</th><th>Agent R²</th><th>Current R²</th><th>Frozen R²</th><th>Agent r</th><th>Current r</th><th>Closer to truth</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+    <p class="note">R²: 1 = perfect, 0 = no better than the average velocity. r: correlation with truth (shape only). Click a row to plot it. Source: agentic/eval_truth_compare.py → out_truth/truth_compare.json</p>
+  </div>
+  <p class="note" id="finding"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+var D=__DATA__;
+(function(){
+  var DOFN={vx:'Reach x',vy:'Reach y',vz:'Reach z',rx:'Wrist rotation',g1:'Grasp 1',g2:'Grasp 2',g3:'Grasp 3'};
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function f(v,d){return (v>0?'+':'')+v.toFixed(d==null?3:d)}
+  var T=document.getElementById('tiles');
+  [['Agent system','--agent',D.mean_agent,'no labels'],['Current system','--current',D.mean_current,'labels every session'],['Frozen, no help','--muted',D.mean_frozen,'reference']].forEach(function(t){
+    T.insertAdjacentHTML('beforeend','<div class="tile"><span class="name"><i class="sw" style="background:var('+t[1]+')"></i>'+t[0]+' <span style="color:var(--muted);font-weight:400">· '+t[3]+'</span></span>'+
+      '<span class="row">Mean R² <b>'+f(t[2].r2)+'</b></span><span class="row">Correlation r <b>'+t[2].corr.toFixed(2)+'</b></span></div>')});
+  var S=document.getElementById('sess'),O=document.getElementById('dof'),tb=document.getElementById('tb');
+  D.sessions.forEach(function(s,i){S.insertAdjacentHTML('beforeend','<option value="'+i+'">'+(i+1)+' · '+s.label+'</option>');
+    var a=s.agent.r2,c=s.current.r2,w=Math.abs(a-c)<0.005?'tie':(a>c?'<span class="win">Agent</span>':'<span class="lose">Current</span>');
+    tb.insertAdjacentHTML('beforeend','<tr data-i="'+i+'"><td>'+(i+1)+' · '+s.label+'</td><td>'+f(a)+'</td><td>'+f(c)+'</td><td>'+f(s.frozen.r2)+'</td><td>'+s.agent.corr.toFixed(2)+'</td><td>'+s.current.corr.toFixed(2)+'</td><td>'+w+'</td></tr>')});
+  var wins=D.sessions.filter(function(s){return s.agent.r2>s.current.r2+0.005}).length;
+  document.getElementById('finding').textContent='Agents are closer to truth in '+wins+' of 14 sessions and beat the frozen decoder on average ('+f(D.mean_agent.r2)+' vs '+f(D.mean_frozen.r2)+'). All three track the shape of the movement about equally (r ≈ '+D.mean_agent.corr.toFixed(2)+'); the gap is in getting its size and offset right, which the labelled current system still does better ('+f(D.mean_current.r2)+').';
+  D.dof.forEach(function(d,i){O.insertAdjacentHTML('beforeend','<option value="'+i+'">'+(DOFN[d]||d)+'</option>')});
+  var best=0;D.sessions[10].trace.truth.forEach(function(row,i){});O.value='0';S.value='11';
+  if(!window.Chart){document.getElementById('stats').textContent='Chart library did not load; see the table below.';return}
+  Chart.defaults.font.family=css('--sans');Chart.defaults.color=css('--muted');
+  var chart=new Chart(document.getElementById('c'),{type:'line',data:{labels:[],datasets:[]},
+    options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(t){return ' '+t.dataset.label+': '+t.parsed.y.toFixed(4)}}}},
+      elements:{point:{radius:0}},
+      scales:{x:{grid:{color:css('--grid')},title:{display:true,text:'seconds'},ticks:{maxTicksLimit:10}},
+        y:{grid:{color:css('--grid')},title:{display:true,text:'velocity (normalized units)'}}}}});
+  function draw(){var s=D.sessions[+S.value],k=+O.value,hz=D.hz,n=s.trace.truth[k].length;
+    chart.data.labels=Array.from({length:n},function(_,i){return (i/hz).toFixed(1)});
+    chart.data.datasets=[
+      {label:'Truth',data:s.trace.truth[k],borderColor:css('--truth'),borderWidth:2.2,tension:.25},
+      {label:'Agent system',data:s.trace.agent[k],borderColor:css('--agent'),borderWidth:1.8,tension:.25},
+      {label:'Current system',data:s.trace.current[k],borderColor:css('--current'),borderWidth:1.8,tension:.25}];
+    chart.options.scales.x.grid.color=css('--grid');chart.options.scales.y.grid.color=css('--grid');chart.update();
+    document.getElementById('stats').innerHTML='<span>Session '+(+S.value+1)+' · '+s.seconds+' s scored</span><span>Agent R² '+f(s.agent.r2)+' · r '+s.agent.corr.toFixed(2)+'</span><span>Current R² '+f(s.current.r2)+' · r '+s.current.corr.toFixed(2)+'</span><span>Agent accepted: '+(s.accepted.join(', ')||'nothing')+'</span>';
+    [].forEach.call(tb.children,function(tr){tr.classList.toggle('sel',tr.dataset.i===S.value)})}
+  S.onchange=draw;O.onchange=draw;tb.onclick=function(e){var tr=e.target.closest('tr');if(tr){S.value=tr.dataset.i;draw()}};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);draw();
+})();
+</script>

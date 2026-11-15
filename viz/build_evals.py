@@ -45,5 +45,5 @@ data = {
 }
 
 TPL = open(os.path.join(HERE, "evals_template.html")).read()
-open(os.path.join(HERE, "evals.html"), "w").write(TPL.replace("__DATA__", json.dumps(data)))
-print("wrote", os.path.join(HERE, "evals.html"))
+open(os.path.join(HERE, "evals_detail.html"), "w").write(TPL.replace("__DATA__", json.dumps(data)))
+print("wrote", os.path.join(HERE, "evals_detail.html"))

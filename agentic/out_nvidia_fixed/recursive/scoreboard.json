@@ -1,0 +1,570 @@
+{
+  "scoreboard": [
+    {
+      "version": 0,
+      "heldout_r2": 0.058854067127547934,
+      "frozen_r2": 0.03465638137205779,
+      "kept": true,
+      "edits": {},
+      "by": "-"
+    },
+    {
+      "version": 1,
+      "heldout_r2": 0.058854067127547934,
+      "frozen_r2": 0.03465638137205779,
+      "kept": false,
+      "edits": {
+        "dead_ratio": 0.15,
+        "verifier_margin": 0.02
+      },
+      "by": "nemotron",
+      "rationale": ""
+    },
+    {
+      "version": 1,
+      "heldout_r2": 0.058854067127547934,
+      "frozen_r2": 0.03465638137205779,
+      "kept": false,
+      "edits": {
+        "verifier_margin": 0.02,
+        "max_mask_frac": 0.5
+      },
+      "by": "nemotron",
+      "rationale": ""
+    },
+    {
+      "version": 1,
+      "heldout_r2": 0.030564708912613064,
+      "frozen_r2": 0.03465638137205779,
+      "kept": false,
+      "edits": {
+        "dead_ratio": 0.1,
+        "noisy_ratio": 2.5
+      },
+      "by": "nemotron",
+      "rationale": ""
+    }
+  ],
+  "final_playbook": {
+    "version": 0,
+    "dead_ratio": 0.2,
+    "noisy_ratio": 3.0,
+    "max_mask_frac": 1.0,
+    "verifier_margin": 0.01,
+    "coral_shrink": 1.0,
+    "max_loops": 3,
+    "agent_order": [
+      "channel_health",
+      "alignment/input",
+      "alignment/latent",
+      "intent"
+    ],
+    "disabled": [],
+    "dod": {
+      "min_intent_cos_gain": 0.0,
+      "speed_range": [
+        0.5,
+        2.0
+      ],
+      "max_masked_frac": 0.5
+    }
+  },
+  "llm_calls": [
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.5,
+      true,
+      {
+        "id": "chatcmpl-a9d7b84316a25e6a",
+        "prompt_tokens": 429,
+        "completion_tokens": 72
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-9252b0ff7013aaf1",
+        "prompt_tokens": 430,
+        "completion_tokens": 91
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-9b71be098f670e67",
+        "prompt_tokens": 431,
+        "completion_tokens": 52
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-a75c700c7937cb4d",
+        "prompt_tokens": 430,
+        "completion_tokens": 66
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-86a6961ad37eb3e7",
+        "prompt_tokens": 431,
+        "completion_tokens": 86
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.7,
+      true,
+      {
+        "id": "chatcmpl-aa3419d2535ad093",
+        "prompt_tokens": 431,
+        "completion_tokens": 68
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-a97267872482ccc5",
+        "prompt_tokens": 430,
+        "completion_tokens": 66
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.6,
+      true,
+      {
+        "id": "chatcmpl-b803b0f6eef61d17",
+        "prompt_tokens": 429,
+        "completion_tokens": 62
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-97b6fccef6037d07",
+        "prompt_tokens": 429,
+        "completion_tokens": 60
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-841865200944ab3e",
+        "prompt_tokens": 430,
+        "completion_tokens": 122
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-a270e524cd52115e",
+        "prompt_tokens": 431,
+        "completion_tokens": 65
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.4,
+      true,
+      {
+        "id": "chatcmpl-a69797cdf0676102",
+        "prompt_tokens": 430,
+        "completion_tokens": 68
+      }
+    ],
+    [
+      "reviewer",
+      "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+      0.6,
+      true,
+      {
+        "id": "chatcmpl-b450e826",
+        "prompt_tokens": 498,
+        "completion_tokens": 126
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-8d58342910c6d183",
+        "prompt_tokens": 430,
+        "completion_tokens": 80
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-97a55a14a2d59907",
+        "prompt_tokens": 431,
+        "completion_tokens": 69
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.7,
+      true,
+      {
+        "id": "chatcmpl-9e88de888412432b",
+        "prompt_tokens": 432,
+        "completion_tokens": 58
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-90339e26fc7859ec",
+        "prompt_tokens": 431,
+        "completion_tokens": 63
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.1,
+      true,
+      {
+        "id": "chatcmpl-a38b2341ccdab454",
+        "prompt_tokens": 432,
+        "completion_tokens": 122
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-a9a78bcc14539dd8",
+        "prompt_tokens": 432,
+        "completion_tokens": 68
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-b7b93f2512eeed98",
+        "prompt_tokens": 701,
+        "completion_tokens": 70
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-80aeb488a77a63ba",
+        "prompt_tokens": 700,
+        "completion_tokens": 78
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-83f0d4c5d2179c9c",
+        "prompt_tokens": 700,
+        "completion_tokens": 73
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-b826b37f4d856ac2",
+        "prompt_tokens": 701,
+        "completion_tokens": 66
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-90631cc376e78b0d",
+        "prompt_tokens": 702,
+        "completion_tokens": 73
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-8b8b6091a97d20f9",
+        "prompt_tokens": 701,
+        "completion_tokens": 70
+      }
+    ],
+    [
+      "reviewer",
+      "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+      0.6,
+      true,
+      {
+        "id": "chatcmpl-4ee5e509",
+        "prompt_tokens": 790,
+        "completion_tokens": 127
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-9ae4ef4f5d20aa30",
+        "prompt_tokens": 700,
+        "completion_tokens": 80
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-a3bcce0c9c3dad22",
+        "prompt_tokens": 701,
+        "completion_tokens": 78
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.7,
+      true,
+      {
+        "id": "chatcmpl-9aa42ca8f2574c62",
+        "prompt_tokens": 702,
+        "completion_tokens": 63
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-bafc11ad8bd29d0a",
+        "prompt_tokens": 701,
+        "completion_tokens": 73
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-96809b282d660420",
+        "prompt_tokens": 702,
+        "completion_tokens": 70
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-b99656e2cd0b0a9d",
+        "prompt_tokens": 702,
+        "completion_tokens": 73
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.1,
+      true,
+      {
+        "id": "chatcmpl-93c3e9997643d9ca",
+        "prompt_tokens": 757,
+        "completion_tokens": 94
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-ba2a7f40d29fb277",
+        "prompt_tokens": 756,
+        "completion_tokens": 82
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-80f47f1568b865c1",
+        "prompt_tokens": 756,
+        "completion_tokens": 70
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-b862b29a765fea35",
+        "prompt_tokens": 757,
+        "completion_tokens": 77
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-9d6e91a4657873ca",
+        "prompt_tokens": 758,
+        "completion_tokens": 60
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.2,
+      true,
+      {
+        "id": "chatcmpl-b19ad37237b32438",
+        "prompt_tokens": 757,
+        "completion_tokens": 76
+      }
+    ],
+    [
+      "reviewer",
+      "nvidia/Nemotron-3.5-Lightning-30B-A3B",
+      0.6,
+      true,
+      {
+        "id": "chatcmpl-0bc77a10",
+        "prompt_tokens": 868,
+        "completion_tokens": 123
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-b575abe8cf8c4168",
+        "prompt_tokens": 756,
+        "completion_tokens": 73
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.8,
+      true,
+      {
+        "id": "chatcmpl-ad3b0aa5b8669878",
+        "prompt_tokens": 757,
+        "completion_tokens": 65
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.4,
+      true,
+      {
+        "id": "chatcmpl-9e86c1e20b9bd0d2",
+        "prompt_tokens": 758,
+        "completion_tokens": 135
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      1.0,
+      true,
+      {
+        "id": "chatcmpl-b277a93e237b63b6",
+        "prompt_tokens": 757,
+        "completion_tokens": 71
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-a1244457990a34c7",
+        "prompt_tokens": 756,
+        "completion_tokens": 67
+      }
+    ],
+    [
+      "planner",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+      0.9,
+      true,
+      {
+        "id": "chatcmpl-9dde1985d428c828",
+        "prompt_tokens": 758,
+        "completion_tokens": 72
+      }
+    ]
+  ],
+  "runtime_s": 101.2
+}
